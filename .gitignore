@@ -1,0 +1,21 @@
+# GIF original (23MB) - usar os videos otimizados
+laboratorio-acordes.gif
+
+# Backups e cópias
+*- Copia*
+*.bak
+*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (caso venha a usar)
+node_modules/
