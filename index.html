@@ -823,12 +823,31 @@ body::after {
   padding: 52px 44px 32px;
   border-bottom: 1px solid var(--border);
 }
-.pricing-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.pricing-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
 .pricing-item {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: .95rem; color: var(--text2);
+  font-size: .95rem; color: var(--text);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.pricing-item-val { color: var(--text3); text-decoration: line-through; opacity: .6; }
+.pricing-item:last-child { border-bottom: none; }
+.pricing-item-name { font-weight: 500; }
+.pricing-item-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.pricing-item-val { color: var(--text3); text-decoration: line-through; opacity: .5; font-size: .85rem; }
+.pricing-item-tag {
+  display: inline-block; background: rgba(198,255,0,.12); border: 1px solid rgba(198,255,0,.3);
+  color: var(--lime); font-weight: 700; font-size: .7rem; letter-spacing: .05em;
+  padding: 3px 10px; border-radius: 4px; text-transform: uppercase;
+}
+.pricing-section-label {
+  font-family: var(--font-h); font-weight: 700; font-size: .75rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--fl);
+  padding: 16px 0 4px; display: flex; align-items: center; gap: 8px;
+}
+.pricing-section-label::before {
+  content: ''; display: block; width: 3px; height: 14px;
+  background: var(--fl); border-radius: 2px;
+}
 .pricing-divider { height: 1px; background: var(--border); margin: 8px 0; }
 .pricing-total {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -1557,11 +1576,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pricing-badge">Oferta de lançamento</div>
       <div class="pricing-top">
         <div class="pricing-items">
-          <div class="pricing-item"><span>Curso completo — 5 módulos + aulas futuras</span><span class="pricing-item-val">R$ 147</span></div>
-          <div class="pricing-item"><span>Laboratório de Acordes — App Exclusivo</span><span class="pricing-item-val">R$ 97</span></div>
-          <div class="pricing-item"><span>Drum Kit — 60+ sons</span><span class="pricing-item-val">R$ 39</span></div>
-          <div class="pricing-item"><span>FL Studio Pré-Configurado</span><span class="pricing-item-val">R$ 39</span></div>
-          <div class="pricing-item"><span>Guia de Atalhos Essenciais</span><span class="pricing-item-val">R$ 19</span></div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">Curso completo — 5 módulos + aulas futuras</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 147</span></span>
+          </div>
+          <div class="pricing-section-label">Bônus inclusos hoje</div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">Laboratório de Acordes — App Exclusivo</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 97</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">Drum Kit — 60+ Sons Profissionais</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 39</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">FL Studio Pré-Configurado</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 39</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">Guia de Atalhos Essenciais</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 19</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
         </div>
         <div class="pricing-divider"></div>
         <div class="pricing-total" style="margin-top:20px;">
