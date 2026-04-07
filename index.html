@@ -828,13 +828,14 @@ body::after {
 .pricing-item {
   display: flex; justify-content: space-between; align-items: center;
   font-size: 1rem; color: #fff;
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  border-radius: 8px;
-  transition: background .2s;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  transition: background .2s, border-color .2s;
 }
-.pricing-item:hover { background: rgba(255,255,255,.03); }
-.pricing-item:last-child { border-bottom: none; }
+.pricing-item:hover { background: rgba(255,255,255,.07); border-color: rgba(255,107,0,.2); }
 .pricing-item-name { font-weight: 600; }
 .pricing-item-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .pricing-item-val {
