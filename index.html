@@ -847,14 +847,15 @@ body::after {
   padding: 4px 14px; border-radius: 4px; text-transform: uppercase;
 }
 .pricing-section-label {
-  font-family: var(--font-h); font-weight: 700; font-size: .8rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--fl);
-  padding: 20px 0 6px; display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-h); font-weight: 800; font-size: .85rem;
+  letter-spacing: .1em; text-transform: uppercase; color: #fff;
+  padding: 10px 20px; margin: 12px 0 4px;
+  background: linear-gradient(90deg, rgba(255,107,0,.15) 0%, transparent 100%);
+  border-left: 3px solid var(--fl);
+  border-radius: 0 8px 8px 0;
+  display: flex; align-items: center; gap: 10px;
 }
-.pricing-section-label::before {
-  content: ''; display: block; width: 3px; height: 16px;
-  background: var(--fl); border-radius: 2px;
-}
+.pricing-section-label span { color: var(--fl); }
 .pricing-divider { height: 1px; background: var(--border); margin: 8px 0; }
 .pricing-total {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -1588,7 +1589,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="pricing-item-name">🎓 Curso completo — 5 módulos + aulas futuras</span>
             <span class="pricing-item-right"><span class="pricing-item-val">R$ 147</span></span>
           </div>
-          <div class="pricing-section-label">Bônus inclusos hoje</div>
+          <div class="pricing-section-label">🎁 Bônus inclusos <span>hoje</span></div>
           <div class="pricing-item">
             <span class="pricing-item-name">🎹 Laboratório de Acordes — App Exclusivo</span>
             <span class="pricing-item-right"><span class="pricing-item-val">R$ 97</span><span class="pricing-item-tag">Grátis</span></span>
