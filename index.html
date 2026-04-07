@@ -805,13 +805,13 @@ body::after {
    PRICING
 ══════════════════════════════════ */
 .pricing-card {
-  background: var(--card);
+  background: linear-gradient(180deg, #1a1a28 0%, #111118 100%);
   border: 2px solid var(--fl);
   border-radius: 28px;
   max-width: 680px; margin: 0 auto;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 0 60px rgba(255,107,0,.08), 0 24px 48px rgba(0,0,0,.3);
+  box-shadow: 0 0 80px rgba(255,107,0,.12), 0 0 120px rgba(255,107,0,.06), 0 24px 48px rgba(0,0,0,.5);
 }
 .pricing-badge {
   position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
@@ -821,7 +821,8 @@ body::after {
 }
 .pricing-top {
   padding: 52px 44px 32px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,107,0,.15);
+  background: linear-gradient(180deg, rgba(255,107,0,.04) 0%, transparent 100%);
 }
 .pricing-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
 .pricing-item {
@@ -874,7 +875,7 @@ body::after {
   font-size: .85rem; padding: 6px 16px;
   border-radius: 20px;
 }
-.pricing-bottom { padding: 32px 44px 40px; }
+.pricing-bottom { padding: 32px 44px 40px; background: rgba(0,0,0,.2); }
 .pricing-checks {
   display: flex; flex-wrap: wrap; gap: 10px 24px;
   margin-top: 16px;
