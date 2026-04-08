@@ -53,7 +53,9 @@
 }
 </script>
 <link rel="dns-prefetch" href="https://pay.hotmart.com">
+<link rel="dns-prefetch" href="https://static.hotmart.com">
 <link rel="preconnect" href="https://pay.hotmart.com" crossorigin>
+<link rel="preconnect" href="https://static.hotmart.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1164,6 +1166,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
 <!-- Fim Google Tag Manager -->
+
+<!-- ═══════ CHECKOUT WIDGET ═══════
+     PLATAFORMA ATIVA: Hotmart (popup na mesma página)
+
+     Para trocar para GGCheckout:
+     1. Remova o script importHotmart() abaixo
+     2. Troque todos os href="https://pay.hotmart.com/K102592452T?checkoutMode=2"
+        por href="https://pagamento-seguro.flstudiointeligente.online"
+     3. Remova onclick="return false;" e class="hotmart-fb hotmart__button-checkout" dos botões
+     4. Adicione target="_blank" rel="noopener" nos botões
+     5. Troque preconnect de pay.hotmart.com para ggcheckout.app
+═══════ -->
+<script type="text/javascript">
+function importHotmart(){
+  var imported = document.createElement('script');
+  imported.src = 'https://static.hotmart.com/checkout/widget.min.js';
+  document.head.appendChild(imported);
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+  document.head.appendChild(link);
+}
+importHotmart();
+</script>
+<!-- Fim Checkout Widget -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) — Mesmo ID GTM-XXXXXXX -->
@@ -1646,7 +1674,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="pricing-bottom">
         <!-- CHECKOUT: Substituir URL abaixo pela URL do Hotmart/pagamento -->
-        <a href="https://pay.hotmart.com/K102592452T" class="btn btn-primary btn-full btn-lg" id="btn-checkout" data-event="cta_pricing" target="_blank" rel="noopener">Quero começar agora por R$ 67,90</a>
+        <a onclick="return false;" href="https://pay.hotmart.com/K102592452T?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn btn-primary btn-full btn-lg" id="btn-checkout" data-event="cta_pricing">Quero começar agora por R$ 67,90</a>
         <div style="text-align:center;margin-top:10px;font-size:.82rem;color:var(--text3);">ou 12x de R$ 6,82 no cartão</div>
         <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;font-size:.78rem;color:var(--text3);">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -1709,7 +1737,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="lime">música</span> começa<br>
       <span class="fl">aqui.</span>
     </h2>
-    <a href="https://pay.hotmart.com/K102592452T" class="btn btn-primary btn-lg reveal d1" data-event="cta_final" target="_blank" rel="noopener">Entrar agora por R$ 67,90
+    <a onclick="return false;" href="https://pay.hotmart.com/K102592452T?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn btn-primary btn-lg reveal d1" data-event="cta_final">Entrar agora por R$ 67,90
       <span class="lab-cta-sub">Curso + App + 4 bônus inclusos</span>
     </a>
     <div class="final-micro reveal d2">
