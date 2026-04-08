@@ -335,6 +335,24 @@ body::after {
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(255,107,0,.4); }
 .btn-primary:active { transform: translateY(1px); }
+/* Override Hotmart widget — manter nosso design no botão */
+.hotmart-fb.hotmart__button-checkout.btn-primary {
+  background: var(--fl) !important; color: #000 !important;
+  border: none !important; border-radius: 14px !important;
+  font-family: var(--font-h) !important; font-weight: 700 !important;
+  text-transform: uppercase !important; letter-spacing: .06em !important;
+  font-size: 1.05rem !important; padding: 16px 36px !important;
+  box-shadow: 0 6px 24px rgba(255,107,0,.3) !important;
+  display: inline-flex !important; align-items: center !important;
+  justify-content: center !important; text-decoration: none !important;
+  cursor: pointer !important; width: auto !important;
+}
+.hotmart-fb.hotmart__button-checkout.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 36px rgba(255,107,0,.4) !important;
+}
+.hotmart-fb.hotmart__button-checkout.btn-full { width: 100% !important; }
+.hotmart-fb.hotmart__button-checkout img { display: none !important; }
 .btn-lime {
   background: var(--lime); color: #000;
   padding: 16px 36px; font-size: 1.05rem;
