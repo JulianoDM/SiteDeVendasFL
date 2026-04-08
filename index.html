@@ -1051,35 +1051,32 @@ footer {
   .hero-photo {
     display: none;
   }
-  .hero-avatar-mobile {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+  .hero-avatar-mobile { display: none !important; }
+  .hero {
+    position: relative;
   }
-  .hero-avatar-mobile img {
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    border: 3px solid var(--fl);
-    box-shadow: 0 0 24px rgba(255,107,0,.25);
-    flex-shrink: 0;
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 340px;
+    background: url('foto-rosto.jpg') center top / cover no-repeat;
+    opacity: .35;
+    z-index: 0;
   }
-  .hero-avatar-mobile-info {
-    text-align: center;
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 340px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      transparent 40%,
+      var(--bg) 100%
+    );
+    z-index: 0;
   }
-  .hero-avatar-mobile-name {
-    font-family: var(--font-h);
-    font-weight: 700; font-size: .95rem;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  .hero-avatar-mobile-role {
-    font-size: .75rem;
-    color: var(--text3);
-  }
+  .hero .wrap { position: relative; z-index: 1; }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; }
   .hero-stats { justify-content: center; }
@@ -1134,8 +1131,7 @@ footer {
   .hero-badge { padding: 5px 14px; margin-bottom: 16px; }
   .hero-badge-text { font-size: .72rem; }
   .hero-badge-dot { width: 6px; height: 6px; }
-  .hero-avatar-mobile img { width: 80px; height: 80px; }
-  .hero-avatar-mobile-name { font-size: .85rem; }
+  .hero::before, .hero::after { height: 280px; }
   .topbar { padding: 6px 8px 6px 16px; max-width: 360px; }
   .topbar-text { font-size: .72rem; }
   .topbar-btn { padding: 7px 16px; font-size: .78rem; }
