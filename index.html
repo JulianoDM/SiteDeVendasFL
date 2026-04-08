@@ -1177,6 +1177,23 @@ footer {
   .expert-name-big { font-size: 2rem; }
 }
 </style>
+<!-- ═══════ META PIXEL — ID: 1709201683591322 ═══════ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1709201683591322');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1709201683591322&ev=PageView&noscript=1"/></noscript>
+<!-- Fim Meta Pixel -->
+
 <!-- Google Tag Manager — Substituir GTM-XXXXXXX pelo seu ID do GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -1812,6 +1829,42 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 } else {
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
+}
+
+// ═══════ META PIXEL EVENTS ═══════
+// InitiateCheckout — quando clica em qualquer botão de compra
+document.querySelectorAll('[data-event]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    if(typeof fbq==='function'){
+      fbq('track','InitiateCheckout',{
+        content_name:'FL Studio Inteligente',
+        content_category:'Curso',
+        value:67.90,
+        currency:'BRL'
+      });
+    }
+  });
+});
+
+// ViewContent — quando a seção de preço fica visível
+if('IntersectionObserver' in window){
+  var pricingEl = document.getElementById('comprar');
+  if(pricingEl){
+    var pxObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && typeof fbq==='function'){
+          fbq('track','ViewContent',{
+            content_name:'Pricing Section',
+            content_category:'Curso',
+            value:67.90,
+            currency:'BRL'
+          });
+          pxObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.3});
+    pxObs.observe(pricingEl);
+  }
 }
 </script>
 </body>
