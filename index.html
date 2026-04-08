@@ -1052,38 +1052,15 @@ footer {
     display: none;
   }
   .hero-avatar-mobile {
-    display: flex !important;
-    align-items: center;
-    gap: 14px;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .hero-avatar-mobile img {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    border: 2px solid var(--fl);
-    flex-shrink: 0;
-  }
-  .hero-avatar-mobile-info {
-    text-align: left;
-  }
-  .hero-avatar-mobile-name {
-    font-family: var(--font-h);
-    font-weight: 700; font-size: 1rem;
-    text-transform: uppercase;
-    color: var(--text);
-  }
-  .hero-avatar-mobile-role {
-    font-size: .8rem;
-    color: var(--text3);
+    display: none !important;
   }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; }
   .hero-stats { justify-content: center; }
   .hero-price-tag { justify-content: center; }
   .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-badge { padding: 6px 16px; margin-bottom: 20px; }
+  .hero-badge-text { font-size: .78rem; }
 
   .scenarios { grid-template-columns: 1fr; }
   .lab-section { grid-template-columns: 1fr; }
@@ -1127,8 +1104,10 @@ footer {
 
 /* ── Mobile ── */
 @media (max-width: 480px) {
-  .hero-h1 { font-size: clamp(1.8rem, 10vw, 2.6rem); }
-  .hero-avatar-mobile img { width: 48px; height: 48px; }
+  .hero-h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+  .hero-badge { padding: 5px 14px; margin-bottom: 16px; }
+  .hero-badge-text { font-size: .72rem; }
+  .hero-badge-dot { width: 6px; height: 6px; }
   .topbar { padding: 6px 8px 6px 16px; max-width: 360px; }
   .topbar-text { font-size: .72rem; }
   .topbar-btn { padding: 7px 16px; font-size: .78rem; }
@@ -1193,7 +1172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="hero-badge reveal" aria-hidden="true">
         <span class="hero-badge-dot"></span>
-        <span class="hero-badge-text">Agora com App Gerador de Acordes Incluso</span>
+        <span class="hero-badge-text">App de Acordes Incluso</span>
       </div>
       <!--CRIE SEU PRIMEIRO BEAT NO FL STUDIO SEM SABER TEORIA MUSICAL.-->
       <h1 class="hero-h1 reveal d1">
@@ -1218,7 +1197,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <dl class="hero-stats reveal d3" aria-label="Números do curso">
-        <div class="h-stat"><dt class="h-stat-num">6</dt><dd class="h-stat-lbl">módulos</dd></div>
+        <div class="h-stat"><dt class="h-stat-num">5</dt><dd class="h-stat-lbl">módulos</dd></div>
         <div class="h-stat"><dt class="h-stat-num">4</dt><dd class="h-stat-lbl">bônus inclusos</dd></div>
         <div class="h-stat"><dt class="h-stat-num">60+</dt><dd class="h-stat-lbl">sons no drum kit</dd></div>
       </dl>
