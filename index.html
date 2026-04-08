@@ -1093,9 +1093,29 @@ footer {
   .expert-layout { grid-template-columns: 1fr; }
   .guar-card { flex-direction: column; text-align: center; }
   .step { flex-direction: column; text-align: center; gap: 10px; }
-  .bonus-card { flex-direction: column; text-align: center; }
+  .bonus-card { flex-direction: column; text-align: center; padding: 24px 20px; }
   .bonus-price { margin-left: 0; text-align: center; }
-  .pricing-top, .pricing-bottom { padding-left: 24px; padding-right: 24px; }
+  .bonus-title { font-size: 1rem; }
+  .bonus-desc { font-size: .85rem; }
+  .bonus-price-val { font-size: 1rem; }
+  .pricing-top { padding: 44px 20px 24px; }
+  .pricing-bottom { padding: 24px 20px 32px; }
+  .pricing-badge { font-size: .7rem; padding: 5px 20px; }
+  .pricing-item {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pricing-item-name { font-size: .9rem; flex: 1 1 100%; }
+  .pricing-item-right { margin-left: auto; }
+  .pricing-item-val { font-size: .85rem; }
+  .pricing-item-tag { font-size: .65rem; padding: 3px 10px; }
+  .pricing-section-label { font-size: .75rem; padding: 8px 14px; margin: 8px 0 2px; }
+  .pricing-total-num { font-size: 3.2rem; }
+  .pricing-total-num sup { font-size: 1.1rem; }
+  .pricing-total-num .cts { font-size: 1.2rem; }
+  .pricing-from { font-size: .85rem; }
+  .pricing-save { font-size: .75rem; padding: 4px 12px; }
   .topbar { max-width: 420px; }
   .topbar-text { font-size: .85rem; }
 
@@ -1121,6 +1141,13 @@ footer {
   .laptop-base::before { width: 40px; height: 5px; top: 3px; }
   .laptop-hinge { height: 6px; }
   .btn-lg { padding: 16px 32px; font-size: 1rem; }
+  .pricing-top { padding: 40px 16px 20px; }
+  .pricing-bottom { padding: 20px 16px 28px; }
+  .pricing-item { padding: 10px 12px; margin-bottom: 6px; }
+  .pricing-item-name { font-size: .85rem; }
+  .pricing-total { flex-direction: column; align-items: center; gap: 8px; }
+  .pricing-total-meta { text-align: center; }
+  .pricing-total-num { font-size: 3rem; }
   .hero-price-now { font-size: 2.4rem; }
   .h-stat-num { font-size: 1.6rem; }
   .hero-stats { gap: 20px; }
