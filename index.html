@@ -1817,6 +1817,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
+// ═══════ CONFIGURAÇÃO CENTRALIZADA ═══════
+// Altere aqui para trocar valores em todo o site
+var SITE_CONFIG = {
+  checkoutUrl: 'https://pay.hotmart.com/K102592452T?checkoutMode=2',
+  price: 67.90,
+  oldPrice: 341,
+  installments: 9,
+  installmentValue: 8.92,
+  pixelId: '1709201683591322',
+  googleAdsId: 'AW-18073574495',
+  gtmId: 'GTM-MKL2FD5C'
+};
+
 // FAQ toggle
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click', function(){
