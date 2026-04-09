@@ -1032,6 +1032,22 @@ footer {
 }
 .footer-links a { color: var(--text2); }
 .footer-links a:hover { color: var(--fl); }
+.footer-legal { display: flex; gap: 16px; justify-content: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.footer-legal a { color: var(--text3); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+.footer-legal a:hover { color: var(--text2); }
+
+/* ── Modal Legal ── */
+.legal-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.8); backdrop-filter: blur(4px); overflow-y: auto; padding: 40px 20px; }
+.legal-modal.open { display: flex; justify-content: center; align-items: flex-start; }
+.legal-modal-content { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; max-width: 680px; width: 100%; padding: 40px 36px; color: var(--text2); font-size: .88rem; line-height: 1.7; position: relative; }
+.legal-modal-content h2 { font-family: var(--font-h); font-size: 1.4rem; color: var(--text); margin-bottom: 24px; text-transform: uppercase; }
+.legal-modal-content h3 { font-size: 1rem; color: var(--text); margin: 20px 0 8px; }
+.legal-modal-content p { margin-bottom: 12px; }
+.legal-modal-content ul { margin: 8px 0 16px 20px; }
+.legal-modal-content li { margin-bottom: 6px; }
+.legal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--text3); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+.legal-close:hover { color: var(--text); }
+@media (max-width: 480px) { .legal-modal-content { padding: 28px 20px; } }
 
 /* ══════════════════════════════════
    REVEAL
@@ -1813,8 +1829,101 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="mailto:julianodmchado@gmail.com">julianodmchado@gmail.com</a>
       </div>
     </div>
+    <div class="footer-legal">
+      <a onclick="document.getElementById('modal-privacidade').classList.add('open')">Pol&iacute;tica de Privacidade</a>
+      <a onclick="document.getElementById('modal-termos').classList.add('open')">Termos de Uso</a>
+    </div>
   </div>
 </footer>
+
+<!-- ═══════ MODAL: POLÍTICA DE PRIVACIDADE ═══════ -->
+<div class="legal-modal" id="modal-privacidade" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="legal-modal-content">
+    <button class="legal-close" onclick="this.closest('.legal-modal').classList.remove('open')">&times;</button>
+    <h2>Pol&iacute;tica de Privacidade</h2>
+    <p><strong>Respons&aacute;vel:</strong> Juliano Dias Machado &mdash; Piracicaba/SP<br>
+    <strong>&Uacute;ltima atualiza&ccedil;&atilde;o:</strong> Abril de 2026</p>
+
+    <h3>1. Dados Coletados</h3>
+    <ul>
+      <li><strong>Email:</strong> coletado pela plataforma de pagamento (Hotmart) no momento da compra.</li>
+      <li><strong>Cookies de sess&atilde;o:</strong> utilizados no Laborat&oacute;rio de Acordes para manter seu acesso ativo.</li>
+      <li><strong>Dados de navega&ccedil;&atilde;o:</strong> coletados automaticamente por pixels de rastreamento (Meta Pixel, Google Ads Tag, Google Tag Manager) para otimiza&ccedil;&atilde;o de an&uacute;ncios.</li>
+    </ul>
+
+    <h3>2. Finalidade</h3>
+    <ul>
+      <li>Processar sua compra e liberar acesso ao curso e b&ocirc;nus.</li>
+      <li>Enviar c&oacute;digo de acesso ao Laborat&oacute;rio de Acordes por email.</li>
+      <li>Otimizar campanhas publicit&aacute;rias e medir resultados.</li>
+    </ul>
+
+    <h3>3. Compartilhamento</h3>
+    <p>Seus dados podem ser compartilhados com:</p>
+    <ul>
+      <li><strong>Hotmart:</strong> processamento de pagamento e entrega do curso.</li>
+      <li><strong>Meta (Facebook/Instagram):</strong> pixel de rastreamento para otimiza&ccedil;&atilde;o de an&uacute;ncios.</li>
+      <li><strong>Google:</strong> Google Ads e Analytics para medi&ccedil;&atilde;o de campanhas.</li>
+      <li><strong>Resend:</strong> envio de emails transacionais (c&oacute;digo de acesso).</li>
+      <li><strong>UTMify:</strong> rastreamento de origem das vendas.</li>
+    </ul>
+
+    <h3>4. Seus Direitos (LGPD)</h3>
+    <p>Conforme a Lei 13.709/2018, voc&ecirc; tem direito a:</p>
+    <ul>
+      <li>Acessar seus dados pessoais.</li>
+      <li>Corrigir dados incompletos ou desatualizados.</li>
+      <li>Solicitar a exclus&atilde;o dos seus dados.</li>
+      <li>Revogar consentimento a qualquer momento.</li>
+    </ul>
+    <p>Para exercer seus direitos, entre em contato: <strong>julianodmchado@gmail.com</strong></p>
+
+    <h3>5. Cookies</h3>
+    <ul>
+      <li><strong>Necess&aacute;rios:</strong> cookie de sess&atilde;o para autentica&ccedil;&atilde;o no app (HttpOnly, Secure).</li>
+      <li><strong>Marketing:</strong> Meta Pixel, Google Ads Tag, GTM &mdash; para otimiza&ccedil;&atilde;o de an&uacute;ncios.</li>
+    </ul>
+
+    <h3>6. Base Legal</h3>
+    <p>Execu&ccedil;&atilde;o de contrato (Art. 7, V da LGPD) para entrega do produto. Consentimento (Art. 7, I) para cookies de marketing.</p>
+  </div>
+</div>
+
+<!-- ═══════ MODAL: TERMOS DE USO ═══════ -->
+<div class="legal-modal" id="modal-termos" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="legal-modal-content">
+    <button class="legal-close" onclick="this.closest('.legal-modal').classList.remove('open')">&times;</button>
+    <h2>Termos de Uso</h2>
+    <p><strong>Respons&aacute;vel:</strong> Juliano Dias Machado &mdash; Piracicaba/SP<br>
+    <strong>&Uacute;ltima atualiza&ccedil;&atilde;o:</strong> Abril de 2026</p>
+
+    <h3>1. Produto</h3>
+    <p>O curso "FL Studio Inteligente para Iniciantes" &eacute; um produto digital composto por videoaulas, materiais complementares e o aplicativo Laborat&oacute;rio de Acordes.</p>
+
+    <h3>2. Acesso</h3>
+    <ul>
+      <li>O acesso &eacute; <strong>vital&iacute;cio</strong> e pessoal.</li>
+      <li>O acesso ao app requer verifica&ccedil;&atilde;o por email (OTP).</li>
+      <li>Aulas futuras ser&atilde;o adicionadas sem custo extra.</li>
+    </ul>
+
+    <h3>3. Garantia</h3>
+    <p>Garantia incondicional de <strong>7 dias</strong>. Solicite o reembolso integral diretamente pela plataforma Hotmart, sem necessidade de justificativa.</p>
+
+    <h3>4. Uso Permitido</h3>
+    <ul>
+      <li>O conte&uacute;do &eacute; para uso pessoal e educacional.</li>
+      <li>&Eacute; <strong>proibida</strong> a revenda, redistribui&ccedil;&atilde;o ou compartilhamento do acesso.</li>
+      <li>O compartilhamento de credenciais pode resultar em revoga&ccedil;&atilde;o do acesso.</li>
+    </ul>
+
+    <h3>5. Entrega</h3>
+    <p>Ap&oacute;s a confirma&ccedil;&atilde;o do pagamento, o acesso &eacute; liberado automaticamente via &aacute;rea de membros da Hotmart. O Laborat&oacute;rio de Acordes &eacute; acessado pelo link fornecido na &aacute;rea de membros, mediante verifica&ccedil;&atilde;o por email.</p>
+
+    <h3>6. Contato</h3>
+    <p>D&uacute;vidas ou solicita&ccedil;&otilde;es: <strong>julianodmchado@gmail.com</strong></p>
+  </div>
+</div>
 
 <script>
 // ═══════ CONFIGURAÇÃO CENTRALIZADA ═══════
