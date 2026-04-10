@@ -53,8 +53,10 @@
   }
 }
 </script>
+<link rel="dns-prefetch" href="https://ggcheckout.app">
 <link rel="dns-prefetch" href="https://pay.hotmart.com">
 <link rel="dns-prefetch" href="https://static.hotmart.com">
+<link rel="preconnect" href="https://ggcheckout.app" crossorigin>
 <link rel="preconnect" href="https://pay.hotmart.com" crossorigin>
 <link rel="preconnect" href="https://static.hotmart.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -1235,7 +1237,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
      Para trocar para GGCheckout:
      1. Remova o script importHotmart() abaixo
-     2. Troque todos os href="https://pay.hotmart.com/K102592452T?checkoutMode=2"
+     2. Troque todos os href="https://ggcheckout.app/K102592452T?checkoutMode=2"
         por href="https://pagamento-seguro.flstudiointeligente.online"
      3. Remova onclick="return false;" e class="hotmart-fb hotmart__button-checkout" dos botões
      4. Adicione target="_blank" rel="noopener" nos botões
@@ -1737,7 +1739,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="pricing-bottom">
         <!-- CHECKOUT: Substituir URL abaixo pela URL do Hotmart/pagamento -->
-        <a onclick="return false;" href="https://pay.hotmart.com/K102592452T?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn btn-primary btn-full btn-lg" id="btn-checkout" data-event="cta_pricing">Quero começar agora por R$ 67,90</a>
+        <a href="#" class="btn btn-primary btn-full btn-lg checkout-btn" id="btn-checkout" data-event="cta_pricing">Quero começar agora por R$ 67,90</a>
         <div style="text-align:center;margin-top:10px;font-size:.82rem;color:var(--text3);">ou 9x de R$ 8,92 no cartão</div>
         <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;font-size:.78rem;color:var(--text3);">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -1800,7 +1802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="lime">música</span> começa<br>
       <span class="fl">aqui.</span>
     </h2>
-    <a onclick="return false;" href="https://pay.hotmart.com/K102592452T?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn btn-primary btn-lg reveal d1" data-event="cta_final">Entrar agora por R$ 67,90
+    <a href="#" class="btn btn-primary btn-lg reveal d1 checkout-btn" data-event="cta_final">Entrar agora por R$ 67,90
       <span class="lab-cta-sub">Curso + App + 4 bônus inclusos</span>
     </a>
     <div class="final-micro reveal d2">
@@ -1929,8 +1931,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 // ═══════ CONFIGURAÇÃO CENTRALIZADA ═══════
 // Altere aqui para trocar valores em todo o site
+// ═══════ CHECKOUT ATIVO ═══════
+// Para trocar: altere checkoutProvider e checkoutUrl
+// 'hotmart' = widget popup (onclick return false + classes hotmart)
+// 'ggcheckout' = redirect nova aba (target _blank)
 var SITE_CONFIG = {
-  checkoutUrl: 'https://pay.hotmart.com/K102592452T?checkoutMode=2',
+  checkoutProvider: 'ggcheckout',  // 'hotmart' ou 'ggcheckout'
+  checkoutUrls: {
+    hotmart: 'https://ggcheckout.app/K102592452T?checkoutMode=2',
+    ggcheckout: 'https://ggcheckout.app/checkout/v2/N0b4E9kUW4exmlm3ZJP9'
+  },
   price: 67.90,
   oldPrice: 341,
   installments: 9,
@@ -1939,6 +1949,31 @@ var SITE_CONFIG = {
   googleAdsId: 'AW-18073574495',
   gtmId: 'GTM-MKL2FD5C'
 };
+
+// ═══════ CHECKOUT DINÂMICO ═══════
+// Configura todos os botões .checkout-btn baseado no SITE_CONFIG
+(function(){
+  var provider = SITE_CONFIG.checkoutProvider;
+  var url = SITE_CONFIG.checkoutUrls[provider];
+  var isHotmart = provider === 'hotmart';
+
+  document.querySelectorAll('.checkout-btn').forEach(function(btn){
+    btn.href = url;
+    if(isHotmart){
+      // Hotmart: popup na mesma página
+      btn.setAttribute('onclick','return false;');
+      btn.classList.add('hotmart-fb','hotmart__button-checkout');
+      btn.removeAttribute('target');
+      btn.removeAttribute('rel');
+    } else {
+      // GGCheckout ou outros: nova aba
+      btn.removeAttribute('onclick');
+      btn.classList.remove('hotmart-fb','hotmart__button-checkout');
+      btn.setAttribute('target','_blank');
+      btn.setAttribute('rel','noopener');
+    }
+  });
+})();
 
 // FAQ toggle
 document.querySelectorAll('.faq-q').forEach(function(btn){
