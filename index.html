@@ -14,14 +14,14 @@
 <meta property="og:url" content="https://flstudiointeligente.online/">
 <meta property="og:title" content="Curso de Produção Musical no FL Studio — Juliano Dias">
 <meta property="og:description" content="Método inteligente para produzir no FL Studio do zero. App exclusivo de acordes + 6 módulos + 4 bônus por R$ 67,90.">
-<meta property="og:image" content="https://flstudiointeligente.online/foto-studio.jpg">
+<meta property="og:image" content="https://flstudiointeligente.online/img/foto-studio.jpg">
 <meta property="og:locale" content="pt_BR">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Curso de Produção Musical no FL Studio — Juliano Dias">
 <meta name="twitter:description" content="Método inteligente para produzir no FL Studio do zero. App de acordes exclusivo + 4 bônus. R$ 67,90.">
-<meta name="twitter:image" content="https://flstudiointeligente.online/foto-studio.jpg">
+<meta name="twitter:image" content="https://flstudiointeligente.online/img/foto-studio.jpg">
 
 <script type="application/ld+json">
 {
@@ -740,6 +740,14 @@ body::after {
   transition: border-color .2s, transform .2s;
 }
 .testi-card:hover { border-color: var(--lime); transform: translateY(-3px); }
+/* Prints WhatsApp */
+.testi-prints { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+.testi-print { border-radius: 16px; overflow: hidden; border: 2px solid rgba(255,255,255,.06); transition: transform .2s, border-color .2s; }
+.testi-print:hover { transform: translateY(-4px); border-color: var(--lime); }
+.testi-print img { width: 100%; height: auto; display: block; }
+.testi-prints-label { text-align: center; margin-top: 32px; margin-bottom: 16px; font-family: var(--font-h); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); }
+@media (max-width: 768px) { .testi-prints { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+@media (max-width: 480px) { .testi-prints { grid-template-columns: 1fr; gap: 12px; max-width: 320px; margin-left: auto; margin-right: auto; } }
 .testi-stars { display: flex; gap: 3px; color: var(--lime); }
 .testi-text {
   font-size: .95rem; color: var(--text2); line-height: 1.75;
@@ -1280,7 +1288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap hero-wrap">
     <div class="hero-left">
       <div class="hero-avatar-mobile" style="display:none;">
-        <img src="foto-rosto.jpg" alt="Juliano Dias" width="56" height="56">
+        <img src="img/foto-rosto.jpg" alt="Juliano Dias" width="56" height="56">
         <div class="hero-avatar-mobile-info">
           <div class="hero-avatar-mobile-name">Juliano Dias</div>
           <div class="hero-avatar-mobile-role">Pianista & Produtor Musical</div>
@@ -1320,7 +1328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <figure class="hero-photo reveal" role="img" aria-label="Juliano Dias, pianista e produtor musical, em seu estúdio">
-      <img src="foto-rosto.jpg" alt="Juliano Dias com fones de ouvido em frente ao FL Studio no estúdio" loading="eager" fetchpriority="high" width="480" height="600">
+      <img src="img/foto-rosto.jpg" alt="Juliano Dias com fones de ouvido em frente ao FL Studio no estúdio" loading="eager" fetchpriority="high" width="480" height="600">
       <figcaption class="hero-photo-label">
         <strong>Juliano Dias</strong>
         Pianista &amp; Produtor Musical
@@ -1626,6 +1634,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+
+    <div class="testi-prints-label reveal">Conversas reais de alunos</div>
+    <div class="testi-prints reveal">
+      <div class="testi-print"><img src="img/Declaração_01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async"></div>
+      <div class="testi-print"><img src="img/Declaração_02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async"></div>
+      <div class="testi-print"><img src="img/Declaração_03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async"></div>
+      <div class="testi-print"><img src="img/Declaração_04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></div>
+    </div>
   </div>
 </section>
 
@@ -1640,13 +1656,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="expert-layout reveal">
       <div class="expert-photos">
         <div class="expert-photo-big">
-          <img src="foto-studio.jpg" alt="Juliano Dias no estúdio com FL Studio aberto" loading="lazy" decoding="async">
+          <img src="img/foto-studio.jpg" alt="Juliano Dias no estúdio com FL Studio aberto" loading="lazy" decoding="async">
         </div>
         <div class="expert-photo-sm">
-          <img src="foto-rosto.jpg" alt="Juliano Dias" loading="lazy" decoding="async">
+          <img src="img/foto-rosto.jpg" alt="Juliano Dias" loading="lazy" decoding="async">
         </div>
         <div class="expert-photo-sm">
-          <img src="foto-piano.jpg" alt="Juliano Dias tocando piano" loading="lazy" decoding="async">
+          <img src="img/foto-piano.jpg" alt="Juliano Dias tocando piano" loading="lazy" decoding="async">
         </div>
       </div>
 
