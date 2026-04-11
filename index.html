@@ -1130,11 +1130,12 @@ footer {
   .expert-layout { grid-template-columns: 1fr; }
   .guar-card { flex-direction: column; text-align: center; }
   .step { flex-direction: column; text-align: center; gap: 10px; }
-  .bonus-card { flex-direction: column; text-align: center; padding: 24px 20px; }
+  .bonus-card { flex-direction: column; text-align: center; padding: 24px 16px; word-break: break-word; }
   .bonus-price { margin-left: 0; text-align: center; }
-  .bonus-title { font-size: 1rem; }
-  .bonus-desc { font-size: .85rem; }
+  .bonus-title { font-size: .95rem; }
+  .bonus-desc { font-size: .82rem; }
   .bonus-price-val { font-size: 1rem; }
+  .bonus-icon { width: 48px; height: 48px; font-size: 1.3rem; }
   .pricing-top { padding: 44px 20px 24px; }
   .pricing-bottom { padding: 24px 20px 32px; }
   .pricing-badge { font-size: .7rem; padding: 5px 20px; }
@@ -1732,8 +1733,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pricing-total" style="margin-top:20px;">
           <div class="pricing-total-num"><sup>R$</sup>67<span class="cts">,90</span></div>
           <div class="pricing-total-meta">
-            <div class="pricing-from">de R$ 341</div>
-            <div class="pricing-save">Economize R$ 273</div>
+            <div class="pricing-from">de R$ 147</div>
+            <div class="pricing-save">Economize R$ 79</div>
           </div>
         </div>
       </div>
@@ -1942,7 +1943,7 @@ var SITE_CONFIG = {
     ggcheckout: 'https://ggcheckout.app/checkout/v2/N0b4E9kUW4exmlm3ZJP9'
   },
   price: 67.90,
-  oldPrice: 341,
+  oldPrice: 147,
   installments: 9,
   installmentValue: 8.92,
   pixelId: '1709201683591322',
