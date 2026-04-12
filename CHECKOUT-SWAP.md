@@ -41,4 +41,4 @@ Deve retornar: `checkoutProvider: 'hotmart'` ou `checkoutProvider: 'ggcheckout'`
 
 ## URLs (NUNCA ALTERAR)
 - Hotmart: `https://pay.hotmart.com/K102592452T?checkoutMode=2`
-- GGCheckout: `https://ggcheckout.app/checkout/v2/N0b4E9kUW4exmlm3ZJP9`
+- GGCheckout: `https://ggcheckout.app/checkout/v5/N0b4E9kUW4exmlm3ZJP9`
