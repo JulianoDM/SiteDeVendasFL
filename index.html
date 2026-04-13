@@ -747,8 +747,17 @@ body::after {
 .testi-print img { width: 100%; height: auto; display: block; }
 .testi-prints-label { text-align: center; margin-top: 12px; margin-bottom: 24px; font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text); }
 .testi-prints-label span { color: var(--lime); }
-@media (max-width: 768px) { .testi-prints { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
-@media (max-width: 480px) { .testi-prints { grid-template-columns: 1fr; gap: 12px; max-width: 320px; margin-left: auto; margin-right: auto; } }
+@media (max-width: 768px) {
+  .testi-prints {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    gap: 12px; padding-bottom: 12px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .testi-prints::-webkit-scrollbar { display: none; }
+  .testi-print { min-width: 260px; max-width: 280px; flex-shrink: 0; scroll-snap-align: center; }
+  .testi-prints-hint { display: block; }
+}
+.testi-prints-hint { display: none; text-align: center; font-size: .72rem; color: var(--text3); margin-top: 8px; }
 .testi-stars { display: flex; gap: 3px; color: var(--lime); }
 .testi-text {
   font-size: .95rem; color: var(--text2); line-height: 1.75;
@@ -1531,6 +1540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="testi-print"><img src="img/Declaração_03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async"></div>
       <div class="testi-print"><img src="img/Declaração_04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></div>
     </div>
+    <div class="testi-prints-hint">Deslize para ver mais &rarr;</div>
   </div>
 </section>
 
