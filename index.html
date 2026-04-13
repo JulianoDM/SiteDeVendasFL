@@ -88,7 +88,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 body {
   font-family: var(--font-b);
   background: var(--bg);
@@ -754,7 +754,7 @@ body::after {
     scrollbar-width: none;
   }
   .testi-prints::-webkit-scrollbar { display: none; }
-  .testi-print { min-width: 260px; max-width: 280px; flex-shrink: 0; scroll-snap-align: center; }
+  .testi-print { min-width: 220px; max-width: 240px; flex-shrink: 0; scroll-snap-align: center; max-height: 400px; overflow: hidden; }
   .testi-prints-hint { display: block; }
 }
 .testi-prints-hint { display: none; text-align: center; font-size: .72rem; color: var(--text3); margin-top: 8px; }
