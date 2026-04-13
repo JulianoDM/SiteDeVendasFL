@@ -1873,20 +1873,45 @@ var SITE_CONFIG = {
   var url = SITE_CONFIG.checkoutUrls[provider];
   var isHotmart = provider === 'hotmart';
 
+  // Criar overlay iframe para checkout transparente (GGCheckout)
+  if(!isHotmart){
+    var overlay = document.createElement('div');
+    overlay.id = 'checkout-overlay';
+    overlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);backdrop-filter:blur(4px);';
+    var closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.cssText = 'position:absolute;top:12px;right:16px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;z-index:100000;line-height:1;';
+    closeBtn.onclick = function(){ overlay.style.display='none'; iframe.src=''; document.body.style.overflow=''; };
+    var iframe = document.createElement('iframe');
+    iframe.id = 'checkout-iframe';
+    iframe.style.cssText = 'width:100%;height:100%;border:none;border-radius:0;';
+    iframe.allow = 'payment';
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(iframe);
+    document.body.appendChild(overlay);
+    // Fechar ao clicar fora
+    overlay.addEventListener('click', function(e){ if(e.target===overlay){ overlay.style.display='none'; iframe.src=''; document.body.style.overflow=''; }});
+  }
+
   document.querySelectorAll('.checkout-btn').forEach(function(btn){
     btn.href = url;
     if(isHotmart){
-      // Hotmart: popup na mesma página
       btn.setAttribute('onclick','return false;');
       btn.classList.add('hotmart-fb','hotmart__button-checkout');
       btn.removeAttribute('target');
       btn.removeAttribute('rel');
     } else {
-      // GGCheckout ou outros: nova aba
-      btn.removeAttribute('onclick');
-      btn.classList.remove('hotmart-fb','hotmart__button-checkout');
-      btn.setAttribute('target','_blank');
-      btn.setAttribute('rel','noopener');
+      // GGCheckout: abrir iframe overlay
+      btn.removeAttribute('target');
+      btn.removeAttribute('rel');
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        var ov = document.getElementById('checkout-overlay');
+        var ifr = document.getElementById('checkout-iframe');
+        ifr.src = url;
+        ov.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
     }
   });
 })();
