@@ -873,8 +873,6 @@ body::after {
 .testi-print { border-radius: 16px; overflow: hidden; border: 2px solid rgba(255,255,255,.06); transition: transform .2s, border-color .2s; }
 .testi-print:hover { transform: translateY(-4px); border-color: var(--lime); }
 .testi-print img { width: 100%; height: auto; display: block; }
-.testi-prints-label { text-align: center; margin-top: 12px; margin-bottom: 24px; font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text); }
-.testi-prints-label span { color: var(--lime); }
 @media (max-width: 768px) {
   .testi-prints {
     display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -1053,6 +1051,7 @@ body::after {
 .pricing-checks {
   display: flex; flex-wrap: wrap; gap: 10px 24px;
   margin-top: 16px;
+  justify-content: center;
 }
 .pricing-check {
   display: flex; gap: 8px; align-items: center;
@@ -1640,7 +1639,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
 
     <!-- Prova social antes do pricing -->
-    <div class="testi-prints-label reveal">Conversas <span>reais</span> de alunos</div>
+    <div class="sec-header reveal">
+      <span class="sec-label">Depoimentos</span>
+      <h2 class="sec-title">Conversas <span class="lime">reais</span> de alunos</h2>
+      <p class="sec-sub">Prints de WhatsApp de quem comprou. Sem atores, sem roteiro.</p>
+    </div>
     <div class="testi-prints reveal" style="margin-bottom:48px;">
       <div class="testi-print"><img src="img/declaracao-01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async"></div>
       <div class="testi-print"><img src="img/declaracao-02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async"></div>
