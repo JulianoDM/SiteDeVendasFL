@@ -600,11 +600,20 @@ body::after {
 ══════════════════════════════════ */
 .lab-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 6fr;
   gap: 48px;
   align-items: center;
 }
-.lab-info { display: flex; flex-direction: column; gap: 20px; }
+.lab-info { display: flex; flex-direction: column; gap: 20px; padding-top: 8px; }
+.lab-subtitle {
+  font-family: var(--font-h);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+.lab-subtitle .lime { color: var(--lime); }
 .lab-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--fl-soft);
@@ -1551,6 +1560,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- APP principal (laboratório) -->
     <div class="lab-section reveal">
       <div class="lab-info">
+        <h3 class="lab-subtitle">Do sentimento<br>à progressão <span class="lime">em 3 cliques</span></h3>
         <p class="lab-desc">
           Escolhe a vibe da música, o app entrega a <strong>progressão pronta pra usar</strong>.
           A diferença entre travar no início e <strong>ter uma música nascendo em minutos.</strong>
@@ -1635,7 +1645,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ═══════ OFERTA (Depoimentos + Preço + Garantia + CTA final) ═══════ -->
-<section class="section" id="comprar" style="background:var(--bg2);">
+<section class="section" id="oferta" style="background:var(--bg2);">
   <div class="wrap">
 
     <!-- Prova social antes do pricing -->
@@ -1651,7 +1661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="testi-print"><img src="img/declaracao-04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></div>
     </div>
 
-    <div class="sec-header reveal">
+    <div class="sec-header reveal" id="comprar">
       <span class="sec-label">Investimento</span>
       <h2 class="sec-title">Tudo isso por <span class="fl">R$ 67,90</span></h2>
       <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:.88rem;color:var(--text3);">
