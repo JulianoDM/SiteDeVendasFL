@@ -434,6 +434,70 @@ body::after {
 }
 .sc-text strong { color: var(--text); font-weight: 600; }
 
+/* Cards DIAGNÓSTICO + POR QUE (estilo roadmap/dev de oferta) */
+.diag-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.diag-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: clamp(20px, 2vw, 28px);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex; flex-direction: column;
+  gap: 16px;
+  transition: border-color .2s, transform .2s;
+}
+.diag-card:hover { border-color: var(--lime); transform: translateY(-3px); }
+.diag-label {
+  font-family: var(--font-h);
+  font-weight: 700; font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--lime);
+}
+.diag-title {
+  font-family: var(--font-h);
+  font-weight: 900; font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.15; color: var(--text);
+}
+.diag-text {
+  font-size: .95rem; color: var(--text2); line-height: 1.7;
+  flex: 1;
+}
+.diag-text strong { color: var(--text); font-weight: 600; }
+.diag-badges {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: auto;
+}
+.diag-badge {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--lime); color: #000;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-h); font-weight: 800; font-size: .78rem;
+  letter-spacing: .02em;
+  box-shadow: 0 4px 16px rgba(198,255,0,.2);
+}
+.diag-chips {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+.diag-chip {
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.02);
+  font-family: var(--font-h); font-weight: 700; font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--text2);
+}
+@media (max-width: 768px) {
+  .diag-grid { grid-template-columns: 1fr; }
+  .diag-chips { justify-content: flex-start; }
+}
+
 .punch-banner {
   margin-top: 24px;
   background: linear-gradient(135deg, var(--fl), #FF8A30);
@@ -1377,7 +1441,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ═══════ PROBLEMA ═══════ -->
+<!-- ═══════ PROBLEMA (2 cards: Diagnóstico + Por Que) ═══════ -->
 <section class="section" id="problema" style="background:var(--bg2);">
   <div class="wrap">
     <div class="sec-header reveal">
@@ -1386,18 +1450,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sec-sub">A maioria não trava por falta de talento. Trava por falta de método.</p>
     </div>
 
-    <div class="scenarios reveal">
-      <div class="sc-card" data-num="01">
-        <div class="sc-title">Não sabe finalizar</div>
-        <p class="sc-text">Monta beat atrás de beat, mas <strong>nenhum termina</strong>. Sempre falta "mais um ajuste". A música vira gaveta esquecida.</p>
+    <div class="diag-grid reveal">
+      <div class="diag-card">
+        <div class="diag-label">Cenário atual</div>
+        <div class="diag-title">Você abre o FL e trava toda vez</div>
+        <p class="diag-text">
+          Monta beat atrás de beat e <strong>nenhum termina</strong>. Abre 17 projetos e se perde em todos.
+          Assiste tutorial no YouTube por horas e <strong>sai sem uma música pronta</strong>.
+          Não é preguiça — é falta de um caminho claro.
+        </p>
+        <div class="diag-badges">
+          <span class="diag-badge" title="Não sabe finalizar">FIN</span>
+          <span class="diag-badge" title="Não sabe organizar">ORG</span>
+          <span class="diag-badge" title="Não sabe começar">INI</span>
+        </div>
       </div>
-      <div class="sc-card" data-num="02">
-        <div class="sc-title">Não sabe organizar</div>
-        <p class="sc-text">17 projetos abertos, mixer sem lógica, nomes genéricos. Quando retoma, <strong>não sabe onde parou</strong>.</p>
-      </div>
-      <div class="sc-card" data-num="03">
-        <div class="sc-title">Não sabe por onde começar</div>
-        <p class="sc-text">Horas no YouTube, tutorial atrás de tutorial, e <strong>nenhuma música terminada</strong>. Falta ordem, não esforço.</p>
+
+      <div class="diag-card">
+        <div class="diag-label">O método</div>
+        <div class="diag-title">Pegando na sua mão de verdade</div>
+        <p class="diag-text">
+          Módulo 1: dominar a interface. Módulo 2: setup perfeito. Módulo 3: mão na massa no primeiro beat.
+          Módulo 4: organizar como profissional. Módulo 5: mix, master e export. <strong>Sem pular etapa, sem teoria chata.</strong>
+        </p>
+        <div class="diag-chips">
+          <span class="diag-chip">Mód 1</span>
+          <span class="diag-chip">Mód 2</span>
+          <span class="diag-chip">Mód 3</span>
+          <span class="diag-chip">Mód 4</span>
+          <span class="diag-chip">Mód 5</span>
+        </div>
       </div>
     </div>
   </div>
