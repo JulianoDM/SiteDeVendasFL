@@ -246,26 +246,15 @@ body::after {
 }
 .hero-sub strong { color: var(--text); font-weight: 600; }
 
-.hero-price-tag {
-  display: flex; align-items: baseline; gap: 14px;
-  margin-bottom: 28px;
-}
-.hero-price-old {
-  font-size: .95rem; color: var(--text3);
-  text-decoration: line-through;
-}
-.hero-price-now {
-  font-family: var(--font-h);
-  font-size: 3rem; font-weight: 900;
-  color: var(--fl); line-height: 1;
-}
-.hero-price-now sup { font-size: 1rem; }
-.hero-price-now .cts { font-size: 1.2rem; }
-
 .hero-ctas {
   display: flex; gap: 14px; flex-wrap: wrap;
   align-items: center;
   margin-bottom: 32px;
+  margin-top: 28px;
+}
+.hero-ctas .btn-primary {
+  padding: 22px 44px;
+  font-size: 1.08rem;
 }
 
 .hero-stats {
@@ -373,6 +362,27 @@ body::after {
 .btn-lg { padding: 20px 48px; font-size: 1.15rem; }
 .btn-full { width: 100%; }
 
+/* Botão com sub-texto empilhado dentro (hero + final CTA) */
+.btn-stacked {
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.15;
+  white-space: normal;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+/* Sub-texto FORTE dentro de botão laranja — preto 90% sem opacity killer */
+.btn-sub-strong {
+  display: block;
+  font-family: var(--font-b);
+  font-weight: 600;
+  font-size: .8rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(0,0,0,.78);
+  margin-top: 2px;
+}
+
 /* ══════════════════════════════════
    SECTION SYSTEM
 ══════════════════════════════════ */
@@ -459,11 +469,11 @@ body::after {
 .problema-cta-wrap .btn-xl-sub {
   display: block;
   font-family: var(--font-b);
-  font-weight: 400;
-  font-size: .78rem;
+  font-weight: 600;
+  font-size: .8rem;
   text-transform: none;
   letter-spacing: 0;
-  opacity: .7;
+  color: rgba(0,0,0,.78);
   margin-top: 4px;
 }
 
@@ -692,12 +702,12 @@ body::after {
 .lab-cta-sub {
   display: block;
   font-family: var(--font-b);
-  font-weight: 400;
-  font-size: .75rem;
+  font-weight: 600;
+  font-size: .8rem;
   text-transform: none;
   letter-spacing: 0;
-  margin-top: 6px;
-  opacity: .7;
+  color: rgba(0,0,0,.78);
+  margin-top: 4px;
 }
 
 /* Laptop mockup */
@@ -1124,29 +1134,23 @@ body::after {
 .final-cta {
   padding: clamp(100px, 12vw, 180px) 0;
   text-align: center;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,107,0,.08) 0%, transparent 70%);
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  pointer-events: none;
+  position: relative;
 }
 .final-h {
   font-family: var(--font-h);
   font-weight: 900; text-transform: uppercase;
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: .88; margin-bottom: 28px;
-  position: relative; z-index: 1;
 }
 .final-micro {
-  display: flex; gap: 16px; justify-content: center;
-  flex-wrap: wrap; margin-top: 20px;
-  font-size: .88rem; color: var(--text3);
-  position: relative; z-index: 1;
+  display: flex; gap: 10px 20px;
+  justify-content: center; align-items: center;
+  flex-wrap: wrap; margin-top: 24px;
+  font-size: .85rem; color: var(--text3);
+  max-width: 520px; margin-left: auto; margin-right: auto;
 }
-.final-micro-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); align-self: center; }
+.final-micro > span:not(.final-micro-dot) { white-space: nowrap; }
+.final-micro-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
 
 /* ══════════════════════════════════
    FOOTER
@@ -1254,7 +1258,6 @@ footer {
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; }
   .hero-stats { justify-content: center; }
-  .hero-price-tag { justify-content: center; }
   .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
   .hero-badge { padding: 6px 16px; margin-bottom: 20px; }
   .hero-badge-text { font-size: .78rem; }
@@ -1334,8 +1337,10 @@ footer {
   .pricing-total-num { font-size: 3rem; }
   .final-cta { padding: clamp(48px, 8vw, 80px) 0; }
   .final-h { font-size: clamp(1.8rem, 7vw, 2.8rem); margin-bottom: 20px; }
-  .hero-price-now { font-size: 2.4rem; }
+  .final-micro { gap: 6px 14px; font-size: .78rem; }
+  .final-micro-dot { display: none; }
   .h-stat-num { font-size: 1.6rem; }
+  .hero-ctas .btn-primary { padding: 18px 32px; font-size: 1rem; }
   .hero-stats { gap: 20px; }
   .section { padding: clamp(48px, 8vw, 80px) 0; }
   .guar-card { padding: 28px 24px; }
@@ -1475,13 +1480,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <strong>método que funciona</strong> — da primeira nota a exportação final da sua música.
       </p>
 
-      <div class="hero-price-tag reveal d2" aria-label="Preço do curso: de R$ 147 por R$ 67,90">
-        <span class="hero-price-old" aria-hidden="true">de R$ 147</span>
-        <span class="hero-price-now"><sup>R$</sup> 67<span class="cts">,90</span></span>
-      </div>
-
       <div class="hero-ctas reveal d2">
-        <a href="#comprar" class="btn btn-primary btn-lg" role="button" data-event="cta_hero">Quero começar agora</a>
+        <a href="#comprar" class="btn btn-primary btn-lg btn-stacked" role="button" data-event="cta_hero">
+          Quero começar agora — R$ 67,90
+          <span class="btn-sub-strong">de R$ 147 · 9x de R$ 8,92</span>
+        </a>
         <a href="#laboratorio" class="btn btn-ghost">Ver o arsenal</a>
       </div>
 
