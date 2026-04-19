@@ -450,14 +450,21 @@ body::after {
   letter-spacing: .02em;
   display: inline-flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   align-items: center;
+  white-space: normal;
+  line-height: 1.2;
+  max-width: 100%;
 }
 .problema-cta-wrap .btn-xl-sub {
-  font-size: .82rem;
-  font-weight: 500;
-  opacity: .75;
+  display: block;
+  font-family: var(--font-b);
+  font-weight: 400;
+  font-size: .78rem;
+  text-transform: none;
   letter-spacing: 0;
+  opacity: .7;
+  margin-top: 4px;
 }
 
 /* Cards DIAGNÓSTICO + POR QUE (estilo roadmap/dev de oferta) */
@@ -624,56 +631,51 @@ body::after {
   font-size: .78rem; color: var(--text3); margin-top: 4px;
 }
 
-/* App feature cards */
+/* App feature cards — tira compacta 4 colunas */
 .app-features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 32px;
 }
 .app-feature-card {
-  background: linear-gradient(135deg, rgba(255,107,0,.07) 0%, var(--card) 100%);
-  border: 1px solid rgba(255,107,0,.18);
-  border-left: 4px solid var(--fl);
-  padding: 32px 28px;
-  border-radius: var(--r);
+  background: var(--card);
+  border: 1px solid rgba(255,107,0,.15);
+  border-left: 3px solid var(--fl);
+  padding: 18px 18px;
+  border-radius: 14px;
   transition: transform .2s, box-shadow .2s, border-color .2s;
   position: relative;
   overflow: hidden;
 }
-.app-feature-card::before {
-  content: attr(data-step);
-  font-family: var(--font-h); font-weight: 900;
-  font-size: 6rem; line-height: 1;
-  color: rgba(255,107,0,.06);
-  position: absolute; top: -12px; right: 8px;
-  pointer-events: none;
-}
+.app-feature-card::before { display: none; }
 .app-feature-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 8px 32px rgba(255,107,0,.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255,107,0,.12);
   border-color: var(--fl);
 }
 .app-feature-card h4 {
   font-family: var(--font-h);
   font-weight: 900;
-  font-size: 1.2rem;
+  font-size: .95rem;
   text-transform: uppercase;
   color: var(--fl);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   position: relative;
 }
 .app-feature-card h4 svg {
   flex-shrink: 0;
   color: var(--fl);
+  width: 18px;
+  height: 18px;
 }
 .app-feature-card p {
-  font-size: .92rem;
+  font-size: .82rem;
   color: var(--text2);
-  line-height: 1.7;
+  line-height: 1.55;
   position: relative;
 }
 .app-feature-card p strong { color: var(--text); font-weight: 600; }
@@ -1211,6 +1213,7 @@ footer {
   .hero-wrap { grid-template-columns: 1fr 1fr; gap: 24px; }
   .hero-h1 { font-size: clamp(2rem, 4vw, 3rem); }
   .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .app-features { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── Tablet portrait / small screens ── */
@@ -1503,23 +1506,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="scenarios reveal">
       <div class="sc-card" data-num="01">
-        <div class="sc-title">Não sabe finalizar</div>
-        <p class="sc-text">Monta beat atrás de beat, mas <strong>nenhum termina</strong>. Sempre falta "mais um ajuste". A música vira gaveta esquecida.</p>
+        <div class="sc-title">Beat que não termina</div>
+        <p class="sc-text">Você começa, anima, e 40 minutos depois tá travado no mesmo loop. <strong>Nunca soa pronto.</strong> A pasta enche de projeto abandonado.</p>
       </div>
       <div class="sc-card" data-num="02">
-        <div class="sc-title">Não sabe organizar</div>
-        <p class="sc-text">17 projetos abertos, mixer sem lógica, nomes genéricos. Quando retoma, <strong>não sabe onde parou</strong>.</p>
+        <div class="sc-title">FL Studio um caos</div>
+        <p class="sc-text">Tela lotada, mixer sem nome, plugins aleatórios. Abre o projeto de ontem e <strong>não lembra onde parou</strong> — recomeça do zero de novo.</p>
       </div>
       <div class="sc-card" data-num="03">
-        <div class="sc-title">Não sabe por onde começar</div>
-        <p class="sc-text">Horas no YouTube, tutorial atrás de tutorial, e <strong>nenhuma música terminada</strong>. Falta ordem, não esforço.</p>
+        <div class="sc-title">Travado antes de começar</div>
+        <p class="sc-text">Assiste tutorial, lê fórum, pesquisa preset — e <strong>não sai nenhuma música</strong>. Não é talento faltando. É método.</p>
       </div>
     </div>
 
     <div class="problema-cta-wrap reveal">
       <a href="#comprar" class="btn btn-primary btn-xl" data-event="cta_problema">
         Quero o método que funciona
-        <span class="btn-xl-sub">Curso + Laboratório de Acordes · R$ 67,90</span>
+        <span class="btn-xl-sub">Acesso imediato · 7 dias de garantia</span>
       </a>
     </div>
   </div>
@@ -1565,19 +1568,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="app-features reveal">
       <div class="app-feature-card" data-step="01">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Crie pelo sentimento</h4>
-        <p>Quer uma música alegre, melancólica ou dark? Escolha a vibe e o app te entrega a <strong>sequência exata de acordes</strong> pra criar aquele clima na hora.</p>
+        <p>Alegre, melancólica ou dark — escolha a vibe, o app gera a <strong>progressão certa</strong>.</p>
       </div>
       <div class="app-feature-card" data-step="02">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Progressões prontas</h4>
-        <p>Bases completas de vários gêneros musicais. Mude o tom, ajuste o BPM, toque em loop e <strong>ouça tudo antes de usar</strong> no seu projeto.</p>
+        <p>Bases completas, tom ajustável, BPM flexível. <strong>Ouça antes de usar.</strong></p>
       </div>
       <div class="app-feature-card" data-step="03">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Monte do seu jeito</h4>
-        <p>Lista completa de acordes mastigada — maiores, menores, variações. <strong>Monte sua própria sequência</strong> sem medo de errar nenhuma nota.</p>
+        <p>Lista completa de acordes mastigada. <strong>Monte sua sequência sem errar.</strong></p>
       </div>
       <div class="app-feature-card" data-step="04">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Arraste e solte no FL</h4>
-        <p>Gostou do que ouviu? Baixe o MIDI e arraste direto pro FL Studio. <strong>A espinha dorsal da sua música nasce em segundos.</strong></p>
+        <p>MIDI exportável direto pro FL Studio. <strong>Música nascendo em segundos.</strong></p>
       </div>
     </div>
 
