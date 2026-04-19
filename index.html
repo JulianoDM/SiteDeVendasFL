@@ -404,14 +404,16 @@ body::after {
 ══════════════════════════════════ */
 .scenarios {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .sc-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: clamp(28px, 3vw, 40px);
+  border-radius: clamp(20px, 2vw, 28px);
+  padding: clamp(36px, 4vw, 56px);
   transition: border-color .2s, transform .2s;
   position: relative; overflow: hidden;
 }
@@ -419,20 +421,44 @@ body::after {
 .sc-card::before {
   content: attr(data-num);
   font-family: var(--font-h); font-weight: 900;
-  font-size: 7rem; line-height: 1;
-  color: rgba(255,255,255,.03);
-  position: absolute; top: -10px; right: 10px;
+  font-size: 9rem; line-height: 1;
+  color: rgba(255,255,255,.04);
+  position: absolute; top: -16px; right: 14px;
   pointer-events: none;
 }
 .sc-title {
   font-family: var(--font-h);
-  font-weight: 900; font-size: 1.5rem;
-  text-transform: uppercase; margin-bottom: 10px;
+  font-weight: 900; font-size: clamp(1.4rem, 2vw, 1.8rem);
+  text-transform: uppercase; margin-bottom: 14px;
+  line-height: 1.15;
 }
 .sc-text {
-  font-size: .95rem; color: var(--text2); line-height: 1.7;
+  font-size: clamp(1rem, 1.1vw, 1.05rem);
+  color: var(--text2); line-height: 1.7;
 }
 .sc-text strong { color: var(--text); font-weight: 600; }
+
+/* CTA grande embaixo dos pain cards */
+.problema-cta-wrap {
+  margin-top: clamp(32px, 4vw, 48px);
+  text-align: center;
+}
+.problema-cta-wrap .btn-xl {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  padding: clamp(18px, 2vw, 24px) clamp(32px, 4vw, 56px);
+  border-radius: 999px;
+  letter-spacing: .02em;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.problema-cta-wrap .btn-xl-sub {
+  font-size: .82rem;
+  font-weight: 500;
+  opacity: .75;
+  letter-spacing: 0;
+}
 
 /* Cards DIAGNÓSTICO + POR QUE (estilo roadmap/dev de oferta) */
 .diag-grid {
@@ -735,6 +761,31 @@ body::after {
    BONUSES
 ══════════════════════════════════ */
 .bonuses { display: flex; flex-direction: column; gap: 12px; }
+
+/* Divisor entre App e bônus adicionais (dentro do Arsenal) */
+.arsenal-divider {
+  display: flex; align-items: center; justify-content: center;
+  margin: clamp(32px, 4vw, 48px) 0 clamp(20px, 2.5vw, 32px);
+  position: relative;
+}
+.arsenal-divider::before,
+.arsenal-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.arsenal-divider-label {
+  padding: 8px 20px;
+  font-family: var(--font-h); font-weight: 700;
+  font-size: .78rem; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--lime);
+  background: rgba(196, 255, 0, .08);
+  border: 1px solid rgba(196, 255, 0, .2);
+  border-radius: 999px;
+  margin: 0 16px;
+}
+.bonuses-arsenal { margin-top: 0; }
 .bonus-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -1421,7 +1472,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="hero-ctas reveal d2">
         <a href="#comprar" class="btn btn-primary btn-lg" role="button" data-event="cta_hero">Quero começar agora</a>
-        <a href="#bonus" class="btn btn-ghost">Ver os bônus</a>
+        <a href="#laboratorio" class="btn btn-ghost">Ver o arsenal</a>
       </div>
 
       <dl class="hero-stats reveal d3" aria-label="Números do curso">
@@ -1441,7 +1492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ═══════ PROBLEMA (2 cards: Diagnóstico + Por Que) ═══════ -->
+<!-- ═══════ PROBLEMA (3 cards: Não sabe finalizar / organizar / começar) ═══════ -->
 <section class="section" id="problema" style="background:var(--bg2);">
   <div class="wrap">
     <div class="sec-header reveal">
@@ -1450,50 +1501,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sec-sub">A maioria não trava por falta de talento. Trava por falta de método.</p>
     </div>
 
-    <div class="diag-grid reveal">
-      <div class="diag-card">
-        <div class="diag-label">Cenário atual</div>
-        <div class="diag-title">Você abre o FL e trava toda vez</div>
-        <p class="diag-text">
-          Monta beat atrás de beat e <strong>nenhum termina</strong>. Abre 17 projetos e se perde em todos.
-          Assiste tutorial no YouTube por horas e <strong>sai sem uma música pronta</strong>.
-          Não é preguiça — é falta de um caminho claro.
-        </p>
-        <div class="diag-badges">
-          <span class="diag-badge" title="Não sabe finalizar">FIN</span>
-          <span class="diag-badge" title="Não sabe organizar">ORG</span>
-          <span class="diag-badge" title="Não sabe começar">INI</span>
-        </div>
+    <div class="scenarios reveal">
+      <div class="sc-card" data-num="01">
+        <div class="sc-title">Não sabe finalizar</div>
+        <p class="sc-text">Monta beat atrás de beat, mas <strong>nenhum termina</strong>. Sempre falta "mais um ajuste". A música vira gaveta esquecida.</p>
       </div>
+      <div class="sc-card" data-num="02">
+        <div class="sc-title">Não sabe organizar</div>
+        <p class="sc-text">17 projetos abertos, mixer sem lógica, nomes genéricos. Quando retoma, <strong>não sabe onde parou</strong>.</p>
+      </div>
+      <div class="sc-card" data-num="03">
+        <div class="sc-title">Não sabe por onde começar</div>
+        <p class="sc-text">Horas no YouTube, tutorial atrás de tutorial, e <strong>nenhuma música terminada</strong>. Falta ordem, não esforço.</p>
+      </div>
+    </div>
 
-      <div class="diag-card">
-        <div class="diag-label">O método</div>
-        <div class="diag-title">Pegando na sua mão de verdade</div>
-        <p class="diag-text">
-          Módulo 1: dominar a interface. Módulo 2: setup perfeito. Módulo 3: mão na massa no primeiro beat.
-          Módulo 4: organizar como profissional. Módulo 5: mix, master e export. <strong>Sem pular etapa, sem teoria chata.</strong>
-        </p>
-        <div class="diag-chips">
-          <span class="diag-chip">Mód 1</span>
-          <span class="diag-chip">Mód 2</span>
-          <span class="diag-chip">Mód 3</span>
-          <span class="diag-chip">Mód 4</span>
-          <span class="diag-chip">Mód 5</span>
-        </div>
-      </div>
+    <div class="problema-cta-wrap reveal">
+      <a href="#comprar" class="btn btn-primary btn-xl" data-event="cta_problema">
+        Quero o método que funciona
+        <span class="btn-xl-sub">Curso + Laboratório de Acordes · R$ 67,90</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ LABORATÓRIO DE ACORDES ═══════ -->
-<section class="section" id="laboratorio" style="background:var(--bg2);">
+<!-- ═══════ ARSENAL (Laboratório + Bônus integrados) ═══════ -->
+<section class="section" id="laboratorio">
   <div class="wrap">
     <div class="sec-header reveal">
-      <span class="lab-badge" style="margin:0 auto 20px;">Ferramenta exclusiva deste curso</span>
-      <h2 class="sec-title">O método inteligente<br><span class="fl">em ação</span></h2>
-      <p class="sec-sub">Não sabe teoria musical? Não precisa. O Laboratório de Acordes faz o trabalho pesado por você — <strong style="color:var(--text);">escolha o gênero, ouça e arraste pro FL Studio.</strong></p>
+      <span class="lab-badge" style="margin:0 auto 20px;">Arsenal completo do curso</span>
+      <h2 class="sec-title">O aplicativo + os bônus<br><span class="fl">que destravam você</span></h2>
+      <p class="sec-sub">Um app exclusivo que substitui meses de teoria musical + 3 bônus práticos. <strong style="color:var(--text);">Tudo incluso, sem custo extra.</strong></p>
     </div>
 
+    <!-- APP principal (laboratório) -->
     <div class="lab-section reveal">
       <div class="lab-info">
         <div class="lab-title">Laboratório de<br><span class="fl">Acordes</span></div>
@@ -1520,6 +1561,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <!-- 4 features do app -->
     <div class="app-features reveal">
       <div class="app-feature-card" data-step="01">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Crie pelo sentimento</h4>
@@ -1539,34 +1581,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="lab-cta-wrap reveal">
-      <a href="#comprar" class="btn btn-primary btn-lg" data-event="cta_lab">Quero ter acesso a essa ferramenta
-        <span class="lab-cta-sub">Curso + Aplicativo por apenas R$ 67,90</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ BÔNUS ═══════ -->
-<section class="section" id="bonus">
-  <div class="wrap">
-    <div class="sec-header reveal">
-      <span class="sec-label">Inclusos</span>
-      <h2 class="sec-title">Bônus que tornam <span class="lime">a decisão óbvia</span></h2>
-      <p class="sec-sub">Ferramentas reais que você vai usar em cada projeto.</p>
+    <!-- Divisor dos bônus -->
+    <div class="arsenal-divider reveal">
+      <span class="arsenal-divider-label">E ainda leva de bônus</span>
     </div>
 
-    <div class="bonuses">
-      <div class="bonus-card featured reveal">
-        <div class="bonus-icon">🎹</div>
-        <div>
-          <div class="bonus-tag">App Exclusivo</div>
-          <div class="bonus-title">Laboratório de Acordes Inteligente</div>
-          <div class="bonus-desc">O app que substituiria horas de estudo de teoria musical. Gera progressões harmônicas prontas pra usar nas suas produções — seria vendido separado, mas está incluso.</div>
-        </div>
-        <div class="bonus-price"><div class="bonus-price-val" style="text-decoration:line-through;opacity:.5;">R$ 97</div><div class="bonus-price-sub">incluso no curso</div></div>
-      </div>
-      <div class="bonus-card reveal d1">
+    <!-- 3 bônus adicionais (sem duplicar o app, que já é o centro) -->
+    <div class="bonuses bonuses-arsenal">
+      <div class="bonus-card reveal">
         <div class="bonus-icon">🥁</div>
         <div>
           <div class="bonus-title">Drum Kit — 60+ Sons Profissionais</div>
@@ -1574,7 +1596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="bonus-price"><div class="bonus-price-val">R$ 39</div><div class="bonus-price-sub">incluso grátis</div></div>
       </div>
-      <div class="bonus-card reveal d2">
+      <div class="bonus-card reveal d1">
         <div class="bonus-icon">⚡</div>
         <div>
           <div class="bonus-title">FL Studio Pré-Configurado</div>
@@ -1582,7 +1604,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="bonus-price"><div class="bonus-price-val">R$ 39</div><div class="bonus-price-sub">incluso grátis</div></div>
       </div>
-      <div class="bonus-card reveal d3">
+      <div class="bonus-card reveal d2">
         <div class="bonus-icon">⌨️</div>
         <div>
           <div class="bonus-title">Guia de Atalhos Essenciais do FL</div>
@@ -1590,6 +1612,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="bonus-price"><div class="bonus-price-val">R$ 19</div><div class="bonus-price-sub">incluso grátis</div></div>
       </div>
+    </div>
+
+    <div class="lab-cta-wrap reveal">
+      <a href="#comprar" class="btn btn-primary btn-lg" data-event="cta_arsenal">Quero o arsenal completo
+        <span class="lab-cta-sub">App + Curso + 3 bônus por R$ 67,90</span>
+      </a>
     </div>
   </div>
 </section>
