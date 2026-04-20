@@ -65,13 +65,12 @@
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://cdn.utmify.com.br">
 
-<!-- Preload responsivo: mobile usa avatar 7KB (LCP do mobile), desktop usa hero 54KB -->
-<link rel="preload" as="image" href="img/foto-rosto-sm.webp" type="image/webp" fetchpriority="high" media="(max-width: 768px)">
-<link rel="preload" as="image" href="img/foto-rosto.webp" type="image/webp" fetchpriority="high" media="(min-width: 769px)">
+<!-- Preload do avatar (LCP mobile — onde Lighthouse mede). Desktop usa img normal com fetchpriority. -->
+<link rel="preload" as="image" href="img/foto-rosto-sm.webp" type="image/webp" fetchpriority="high">
 
 <!-- Fontes Google: NÃO bloqueiam render (print trick) — página pinta com fallback, depois troca -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
 <style>
 :root {
   --bg:     #0A0A0F;
@@ -1432,9 +1431,9 @@ footer {
 
   // Dispara após load completo OU na primeira interação (o que vier antes)
   if(document.readyState === 'complete'){
-    setTimeout(loadTracking, 1200);
+    setTimeout(loadTracking, 4000);
   } else {
-    window.addEventListener('load', function(){ setTimeout(loadTracking, 1200); }, {once:true});
+    window.addEventListener('load', function(){ setTimeout(loadTracking, 4000); }, {once:true});
   }
   ['scroll','mousedown','touchstart','keydown'].forEach(function(ev){
     window.addEventListener(ev, loadTracking, {once:true, passive:true});
