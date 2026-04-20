@@ -1265,32 +1265,37 @@ footer {
   .hero-photo {
     display: none;
   }
+  /* Avatar row compacto — foto + nome lado a lado, ocupa ~60px vertical */
   .hero-avatar-mobile {
     display: flex !important;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
   }
   .hero-avatar-mobile img {
-    width: 90px; height: 90px;
+    width: 52px; height: 52px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
-    border: 3px solid var(--fl);
-    box-shadow: 0 0 24px rgba(255,107,0,.25);
+    border: 2px solid var(--fl);
+    box-shadow: 0 0 14px rgba(255,107,0,.25);
   }
-  .hero-avatar-mobile-info { text-align: center; }
+  .hero-avatar-mobile-info { text-align: left; }
   .hero-avatar-mobile-name {
     font-family: var(--font-h); font-weight: 700;
-    font-size: .95rem; text-transform: uppercase; color: #fff;
+    font-size: .9rem; text-transform: uppercase; color: #fff;
+    line-height: 1.1;
   }
-  .hero-avatar-mobile-role { font-size: .75rem; color: var(--text3); }
-  .hero-sub { margin-left: auto; margin-right: auto; }
-  .hero-ctas { justify-content: center; }
+  .hero-avatar-mobile-role { font-size: .72rem; color: var(--text3); }
+  /* Esconder sub + ghost button + foto grande — primeira tela enxuta, foco no CTA principal */
+  .hero-sub { display: none; }
+  .hero-ctas { justify-content: center; margin-top: 4px; margin-bottom: 12px; }
+  .hero-ctas .btn-ghost { display: none; }
   .hero-stats { justify-content: center; }
-  .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
-  .hero-badge { padding: 6px 16px; margin-bottom: 20px; }
+  .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 16px; }
+  .hero-badge { padding: 6px 16px; margin-bottom: 12px; }
   .hero-badge-text { font-size: .78rem; }
 
   .scenarios { grid-template-columns: 1fr; }
@@ -1343,8 +1348,10 @@ footer {
   .hero-badge { padding: 5px 14px; margin-bottom: 16px; }
   .hero-badge-text { font-size: .72rem; }
   .hero-badge-dot { width: 6px; height: 6px; }
-  .hero-avatar-mobile img { width: 80px; height: 80px; }
+  .hero-avatar-mobile img { width: 48px; height: 48px; }
   .hero-avatar-mobile-name { font-size: .85rem; }
+  /* Em 480px, esconde stats pra CTA + preço caberem na 1ª tela */
+  .hero-stats { display: none; }
   .topbar { padding: 6px 8px 6px 16px; max-width: 360px; }
   .topbar-text { font-size: .72rem; }
   .topbar-btn { padding: 7px 16px; font-size: .78rem; }
@@ -1480,7 +1487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══════ STICKY BAR ═══════ -->
 <nav class="topbar" aria-label="Barra de oferta">
-  <span class="topbar-text">FL Studio Inteligente — R$ 67,90 + App de Acordes</span>
+  <span class="topbar-text">R$ 67,90 — Curso + App</span>
   <a href="#" class="topbar-btn checkout-btn" data-event="cta_topbar">Entrar agora</a>
 </nav>
 
@@ -1894,7 +1901,7 @@ var SITE_CONFIG = {
   checkoutProvider: 'ggcheckout',  // 'hotmart' ou 'ggcheckout'
   checkoutUrls: {
     hotmart: 'https://pay.hotmart.com/K102592452T?checkoutMode=2',
-    ggcheckout: 'https://pagamentoseguro.flstudiointeligente.online/checkout/v2/N0b4E9kUW4exmlm3ZJP9'
+    ggcheckout: 'https://pagamentoseguro.flstudiointeligente.online/checkout/v3/N0b4E9kUW4exmlm3ZJP9'
   },
   price: 67.90,
   oldPrice: 147,
