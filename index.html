@@ -54,19 +54,23 @@
   }
 }
 </script>
-<link rel="dns-prefetch" href="https://pagamentoseguro.flstudiointeligente.online">
+<!-- Preconnects: só os críticos pro LCP (Lighthouse avisa se passar de 4) -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- dns-prefetch pros domínios secundários (custo ~0, só resolve DNS) -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://pay.hotmart.com">
 <link rel="dns-prefetch" href="https://static.hotmart.com">
-<link rel="preconnect" href="https://pagamentoseguro.flstudiointeligente.online" crossorigin>
-<link rel="preconnect" href="https://pay.hotmart.com" crossorigin>
-<link rel="preconnect" href="https://static.hotmart.com" crossorigin>
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://pagamentoseguro.flstudiointeligente.online">
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+<link rel="dns-prefetch" href="https://www.clarity.ms">
+<link rel="dns-prefetch" href="https://cdn.utmify.com.br">
+
 <!-- Preload da foto hero — LCP prioritário (WebP 78KB vs JPG 224KB = -65%) -->
 <link rel="preload" as="image" href="img/foto-rosto.webp" type="image/webp" fetchpriority="high">
-<!-- Fontes: só os pesos realmente usados (removidos 300 de ambas — economiza ~50KB) -->
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Fontes Google: NÃO bloqueiam render (print trick) — página pinta com fallback, depois troca -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root {
   --bg:     #0A0A0F;
@@ -1360,69 +1364,88 @@ footer {
   .expert-name-big { font-size: 2rem; }
 }
 </style>
-<!-- ═══════ META PIXEL — ID: 1709201683591322 ═══════ -->
+<!-- ═══════ TRACKING DEFERIDO ═══════
+     Todos os pixels/tags são carregados APÓS o LCP pra não bloquear
+     o first paint. Dispara no 'load' event ou no primeiro scroll/click —
+     o que vier primeiro. Mantém Meta Pixel PageView, Google Ads, GA4,
+     GTM, Clarity, UTMify todos funcionando, só que fora do critical path.
+
+     Trade-off: usuários que rejeitam/abandonam em <100ms podem não ser
+     trackeados. Pra landing de venda, esse trade vale (LCP ↓ melhora conversão).
+═══════ -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1709201683591322');
-fbq('track','PageView');
+(function(){
+  var loaded = false;
+  function loadTracking(){
+    if(loaded) return; loaded = true;
+
+    // dataLayer stub (pra código que dispara eventos antes do GTM carregar)
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+
+    // 1) Meta Pixel
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1709201683591322');
+    fbq('track','PageView');
+
+    // 2) Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","wb2vi3csbc");
+
+    // 3) Google Ads + GA4
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18073574495';
+    document.head.appendChild(gtagScript);
+    gtag('js', new Date());
+    gtag('config', 'AW-18073574495');
+    gtag('config', 'G-HY0WWK66RX');
+
+    // 4) UTMify
+    window.pixelId = "69dd30704579c5d0a59c15ea";
+    var utmPixel = document.createElement('script');
+    utmPixel.async = true; utmPixel.defer = true;
+    utmPixel.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
+    document.head.appendChild(utmPixel);
+    var utmScript = document.createElement('script');
+    utmScript.async = true; utmScript.defer = true;
+    utmScript.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+    utmScript.setAttribute('data-utmify-prevent-xcod-sck','');
+    utmScript.setAttribute('data-utmify-prevent-subids','');
+    document.head.appendChild(utmScript);
+
+    // 5) Google Tag Manager
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MKL2FD5C');
+  }
+
+  // Dispara após load completo OU na primeira interação (o que vier antes)
+  if(document.readyState === 'complete'){
+    setTimeout(loadTracking, 1200);
+  } else {
+    window.addEventListener('load', function(){ setTimeout(loadTracking, 1200); }, {once:true});
+  }
+  ['scroll','mousedown','touchstart','keydown'].forEach(function(ev){
+    window.addEventListener(ev, loadTracking, {once:true, passive:true});
+  });
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1709201683591322&ev=PageView&noscript=1"/></noscript>
-<!-- Fim Meta Pixel -->
-
-<!-- ═══════ MICROSOFT CLARITY — ID: wb2vi3csbc ═══════ -->
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window,document,"clarity","script","wb2vi3csbc");
-</script>
-<!-- Fim Clarity -->
-
-<!-- ═══════ GOOGLE ADS TAG — ID: AW-18073574495 ═══════ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18073574495"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-18073574495');
-gtag('config', 'G-HY0WWK66RX');
-</script>
-<!-- Fim Google Ads Tag -->
-
-<!-- ═══════ UTMIFY PIXEL ═══════ -->
-<script>
-  window.pixelId = "69dd30704579c5d0a59c15ea";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
-<script
-  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-  data-utmify-prevent-xcod-sck
-  data-utmify-prevent-subids
-  async
-  defer
-></script>
-<!-- Fim UTMify -->
-
-<!-- Google Tag Manager — Substituir GTM-MKL2FD5C pelo seu ID do GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MKL2FD5C');</script>
-<!-- Fim Google Tag Manager -->
 
 <!-- ═══════ CHECKOUT WIDGET ═══════
      PLATAFORMA ATIVA: Hotmart (popup na mesma página)
