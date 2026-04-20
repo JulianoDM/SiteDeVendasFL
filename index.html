@@ -1481,7 +1481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ═══════ STICKY BAR ═══════ -->
 <nav class="topbar" aria-label="Barra de oferta">
   <span class="topbar-text">FL Studio Inteligente — R$ 67,90 + App de Acordes</span>
-  <a href="#comprar" class="topbar-btn" data-event="cta_topbar">Entrar agora</a>
+  <a href="#" class="topbar-btn checkout-btn" data-event="cta_topbar">Entrar agora</a>
 </nav>
 
 <main id="conteudo-principal">
@@ -1517,7 +1517,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
 
       <div class="hero-ctas reveal d2">
-        <a href="#comprar" class="btn btn-primary btn-lg btn-stacked" role="button" data-event="cta_hero">
+        <a href="#" class="btn btn-primary btn-lg btn-stacked checkout-btn" role="button" data-event="cta_hero">
           Quero começar agora — R$ 67,90
           <span class="btn-sub-strong">de R$ 147 · em até 12x de R$ 5,66</span>
         </a>
@@ -1569,7 +1569,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="problema-cta-wrap reveal">
-      <a href="#comprar" class="btn btn-primary btn-xl" data-event="cta_problema">
+      <a href="#" class="btn btn-primary btn-xl checkout-btn" data-event="cta_problema">
         Quero o método que funciona
         <span class="btn-xl-sub">Acesso imediato · 7 dias de garantia</span>
       </a>
@@ -1666,7 +1666,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="lab-cta-wrap reveal">
-      <a href="#comprar" class="btn btn-primary btn-lg" data-event="cta_arsenal">Quero o arsenal completo
+      <a href="#" class="btn btn-primary btn-lg checkout-btn" data-event="cta_arsenal">Quero o arsenal completo
         <span class="lab-cta-sub">App + Curso + 3 bônus por R$ 67,90</span>
       </a>
     </div>
@@ -1906,14 +1906,46 @@ var SITE_CONFIG = {
 };
 
 // ═══════ CHECKOUT DINÂMICO ═══════
-// Configura todos os botões .checkout-btn baseado no SITE_CONFIG
+// Configura todos os botões .checkout-btn baseado no SITE_CONFIG.
+// Propaga UTMs + click IDs (gclid/fbclid/etc) da URL atual pro checkout —
+// defesa contra UTMify ainda não ter carregado no momento do clique.
 (function(){
   var provider = SITE_CONFIG.checkoutProvider;
-  var url = SITE_CONFIG.checkoutUrls[provider];
+  var baseUrl = SITE_CONFIG.checkoutUrls[provider];
   var isHotmart = provider === 'hotmart';
 
-  document.querySelectorAll('.checkout-btn').forEach(function(btn){
-    btn.href = url;
+  // Parâmetros que SEMPRE propagam pro checkout (tracking/attribution)
+  var TRACKING_KEYS = [
+    'utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+    'gclid','fbclid','ttclid','msclkid','li_fat_id','twclid', // click IDs de ads
+    'xcod','sck','src','ref'                                   // Hotmart/UTMify/custom
+  ];
+
+  function appendTrackingParams(url){
+    try {
+      var target = new URL(url);
+      var source = new URLSearchParams(window.location.search);
+      TRACKING_KEYS.forEach(function(key){
+        var value = source.get(key);
+        if(value !== null && value !== ''){
+          target.searchParams.set(key, value);
+        }
+      });
+      return target.toString();
+    } catch(e){
+      return url; // fallback seguro se URL for inválida por algum motivo
+    }
+  }
+
+  // Atualiza a URL dos botões na hora do clique — pega o estado MAIS RECENTE
+  // da window.location.search (caso UTMify ou outro script tenha alterado).
+  function refreshButton(btn){
+    btn.href = appendTrackingParams(baseUrl);
+  }
+
+  var buttons = document.querySelectorAll('.checkout-btn');
+  buttons.forEach(function(btn){
+    refreshButton(btn);
     if(isHotmart){
       btn.setAttribute('onclick','return false;');
       btn.classList.add('hotmart-fb','hotmart__button-checkout');
@@ -1926,6 +1958,10 @@ var SITE_CONFIG = {
       btn.setAttribute('target','_blank');
       btn.setAttribute('rel','noopener');
     }
+    // Re-anexa UTMs no mousedown (garante captura mesmo se params
+    // forem adicionados dinamicamente durante a sessão)
+    btn.addEventListener('mousedown', function(){ refreshButton(btn); }, {passive:true});
+    btn.addEventListener('touchstart', function(){ refreshButton(btn); }, {passive:true});
   });
 
   // Widget do Hotmart: carrega APENAS se provider for 'hotmart'.
