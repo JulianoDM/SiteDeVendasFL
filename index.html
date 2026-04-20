@@ -1448,43 +1448,10 @@ footer {
 src="https://www.facebook.com/tr?id=1709201683591322&ev=PageView&noscript=1"/></noscript>
 
 <!-- ═══════ CHECKOUT WIDGET ═══════
-     PLATAFORMA ATIVA: Hotmart (popup na mesma página)
-
-     Para trocar para GGCheckout:
-     1. Remova o script importHotmart() abaixo
-     2. Troque todos os href="https://ggcheckout.app/K102592452T?checkoutMode=2"
-        por href="https://pagamento-seguro.flstudiointeligente.online"
-     3. Remova onclick="return false;" e class="hotmart-fb hotmart__button-checkout" dos botões
-     4. Adicione target="_blank" rel="noopener" nos botões
-     5. Troque preconnect de pay.hotmart.com para ggcheckout.app
+     Hotmart widget só é carregado SE o SITE_CONFIG.checkoutProvider = 'hotmart'.
+     Lógica movida pro <body> junto com o SITE_CONFIG (linha ~1910) —
+     evita 160KB de jQuery+Fancybox desnecessários quando usando ggcheckout.
 ═══════ -->
-<script type="text/javascript">
-// Hotmart widget: carrega com idle callback (fora do critical path) ou ao scrollar
-(function(){
-  var loaded = false;
-  function importHotmart(){
-    if(loaded) return; loaded = true;
-    var s = document.createElement('script');
-    s.src = 'https://static.hotmart.com/checkout/widget.min.js';
-    s.async = true;
-    document.head.appendChild(s);
-    var l = document.createElement('link');
-    l.rel = 'stylesheet'; l.type = 'text/css';
-    l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
-    document.head.appendChild(l);
-  }
-  // Carrega quando navegador tá ocioso OU no primeiro scroll/interação
-  if('requestIdleCallback' in window){
-    requestIdleCallback(importHotmart, {timeout: 3000});
-  } else {
-    setTimeout(importHotmart, 2000);
-  }
-  // Fallback: se o usuário interagir antes do idle, carrega na hora
-  ['scroll','mousedown','touchstart','keydown'].forEach(function(ev){
-    window.addEventListener(ev, importHotmart, {once:true, passive:true});
-  });
-})();
-</script>
 <!-- Fim Checkout Widget -->
 </head>
 <body>
@@ -1509,7 +1476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-left">
       <div class="hero-avatar-mobile" style="display:none;">
         <picture>
-          <source srcset="img/foto-rosto.webp" type="image/webp">
+          <source srcset="img/foto-rosto-sm.webp" type="image/webp">
           <img src="img/foto-rosto.jpg" alt="Juliano Dias" width="56" height="56">
         </picture>
         <div class="hero-avatar-mobile-info">
@@ -1701,10 +1668,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sec-sub">Algumas declarações dos alunos sobre o curso.</p>
     </div>
     <div class="testi-prints reveal" style="margin-bottom:48px;">
-      <div class="testi-print"><picture><source srcset="img/declaracao-01.webp" type="image/webp"><img src="img/declaracao-01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async"></picture></div>
-      <div class="testi-print"><picture><source srcset="img/declaracao-02.webp" type="image/webp"><img src="img/declaracao-02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async"></picture></div>
-      <div class="testi-print"><picture><source srcset="img/declaracao-03.webp" type="image/webp"><img src="img/declaracao-03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async"></picture></div>
-      <div class="testi-print"><picture><source srcset="img/declaracao-04.webp" type="image/webp"><img src="img/declaracao-04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-01.webp" type="image/webp"><img src="img/declaracao-01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async" width="600" height="1244"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-02.webp" type="image/webp"><img src="img/declaracao-02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async" width="600" height="1233"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-03.webp" type="image/webp"><img src="img/declaracao-03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async" width="600" height="1255"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-04.webp" type="image/webp"><img src="img/declaracao-04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async" width="600" height="1253"></picture></div>
     </div>
 
     <div class="sec-header reveal" id="comprar">
@@ -1944,6 +1911,31 @@ var SITE_CONFIG = {
       btn.setAttribute('rel','noopener');
     }
   });
+
+  // Widget do Hotmart: carrega APENAS se provider for 'hotmart'.
+  // Economiza ~160KB (jQuery 85KB + Fancybox 52KB + CSS 14KB + widget 3KB)
+  // quando usando ggcheckout, que é só um redirect.
+  if(isHotmart){
+    var loadWidget = function(){
+      if(window.__hotmartLoaded) return;
+      window.__hotmartLoaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://static.hotmart.com/checkout/widget.min.js';
+      s.async = true; document.head.appendChild(s);
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.type = 'text/css';
+      l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+      document.head.appendChild(l);
+    };
+    if('requestIdleCallback' in window){
+      requestIdleCallback(loadWidget, {timeout: 3000});
+    } else {
+      setTimeout(loadWidget, 2000);
+    }
+    ['scroll','mousedown','touchstart','keydown'].forEach(function(ev){
+      window.addEventListener(ev, loadWidget, {once:true, passive:true});
+    });
+  }
 })();
 
 // FAQ toggle
