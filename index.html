@@ -69,8 +69,8 @@
 <link rel="preload" as="image" href="img/foto-rosto-sm.webp" type="image/webp" fetchpriority="high">
 
 <!-- Fontes Google: NÃO bloqueiam render (print trick) — página pinta com fallback, depois troca -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 :root {
   --bg:     #0A0A0F;
@@ -91,8 +91,28 @@
   --safe:   #27854A;
   --r:      20px;
   --r-sm:   12px;
-  --font-h: 'Big Shoulders Display', Impact, sans-serif;
-  --font-b: 'Inter', system-ui, sans-serif;
+  --font-h: 'Big Shoulders Display', 'Big Shoulders Fallback', Impact, sans-serif;
+  --font-b: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+}
+
+/* Fallback fonts com métricas ajustadas pra minimizar layout shift no swap da fonte custom.
+   Ideia: quando Big Shoulders/Inter finalmente carregam, o reflow é quase zero porque
+   o fallback já tinha as mesmas dimensões. Fonte-base: Arial (ubíquo, métricas conhecidas). */
+@font-face {
+  font-family: 'Big Shoulders Fallback';
+  src: local('Impact'), local('Haettenschweiler'), local('Arial Narrow Bold');
+  size-adjust: 92%;
+  ascent-override: 95%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
