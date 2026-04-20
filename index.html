@@ -63,7 +63,10 @@
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Preload da foto hero — LCP prioritário (WebP 78KB vs JPG 224KB = -65%) -->
+<link rel="preload" as="image" href="img/foto-rosto.webp" type="image/webp" fetchpriority="high">
+<!-- Fontes: só os pesos realmente usados (removidos 300 de ambas — economiza ~50KB) -->
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:     #0A0A0F;
@@ -1433,17 +1436,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      5. Troque preconnect de pay.hotmart.com para ggcheckout.app
 ═══════ -->
 <script type="text/javascript">
-function importHotmart(){
-  var imported = document.createElement('script');
-  imported.src = 'https://static.hotmart.com/checkout/widget.min.js';
-  document.head.appendChild(imported);
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
-  document.head.appendChild(link);
-}
-importHotmart();
+// Hotmart widget: carrega com idle callback (fora do critical path) ou ao scrollar
+(function(){
+  var loaded = false;
+  function importHotmart(){
+    if(loaded) return; loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://static.hotmart.com/checkout/widget.min.js';
+    s.async = true;
+    document.head.appendChild(s);
+    var l = document.createElement('link');
+    l.rel = 'stylesheet'; l.type = 'text/css';
+    l.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+    document.head.appendChild(l);
+  }
+  // Carrega quando navegador tá ocioso OU no primeiro scroll/interação
+  if('requestIdleCallback' in window){
+    requestIdleCallback(importHotmart, {timeout: 3000});
+  } else {
+    setTimeout(importHotmart, 2000);
+  }
+  // Fallback: se o usuário interagir antes do idle, carrega na hora
+  ['scroll','mousedown','touchstart','keydown'].forEach(function(ev){
+    window.addEventListener(ev, importHotmart, {once:true, passive:true});
+  });
+})();
 </script>
 <!-- Fim Checkout Widget -->
 </head>
@@ -1468,7 +1485,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap hero-wrap">
     <div class="hero-left">
       <div class="hero-avatar-mobile" style="display:none;">
-        <img src="img/foto-rosto.jpg" alt="Juliano Dias" width="56" height="56">
+        <picture>
+          <source srcset="img/foto-rosto.webp" type="image/webp">
+          <img src="img/foto-rosto.jpg" alt="Juliano Dias" width="56" height="56">
+        </picture>
         <div class="hero-avatar-mobile-info">
           <div class="hero-avatar-mobile-name">Juliano Dias</div>
           <div class="hero-avatar-mobile-role">Pianista & Produtor Musical</div>
@@ -1506,7 +1526,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <figure class="hero-photo reveal" role="img" aria-label="Juliano Dias, pianista e produtor musical, em seu estúdio">
-      <img src="img/foto-rosto.jpg" alt="Juliano Dias com fones de ouvido em frente ao FL Studio no estúdio" loading="eager" fetchpriority="high" width="480" height="600">
+      <picture>
+        <source srcset="img/foto-rosto.webp" type="image/webp">
+        <img src="img/foto-rosto.jpg" alt="Juliano Dias com fones de ouvido em frente ao FL Studio no estúdio" loading="eager" fetchpriority="high" width="480" height="600">
+      </picture>
       <figcaption class="hero-photo-label">
         <strong>Juliano Dias</strong>
         Pianista &amp; Produtor Musical
@@ -1573,9 +1596,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="laptop-mockup">
         <div class="laptop-screen">
-          <video autoplay loop muted playsinline preload="metadata" aria-label="Laboratório de Acordes em ação — gerando progressões de acordes, tocando no piano virtual e exportando MIDI">
-            <source src="laboratorio-acordes.webm" type="video/webm">
-            <source src="laboratorio-acordes.mp4" type="video/mp4">
+          <video id="lab-video" loop muted playsinline preload="none" aria-label="Laboratório de Acordes em ação — gerando progressões de acordes, tocando no piano virtual e exportando MIDI">
+            <source data-src="laboratorio-acordes.webm" type="video/webm">
+            <source data-src="laboratorio-acordes.mp4" type="video/mp4">
           </video>
         </div>
         <div class="laptop-base"></div>
@@ -1655,10 +1678,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sec-sub">Algumas declarações dos alunos sobre o curso.</p>
     </div>
     <div class="testi-prints reveal" style="margin-bottom:48px;">
-      <div class="testi-print"><img src="img/declaracao-01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async"></div>
-      <div class="testi-print"><img src="img/declaracao-02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async"></div>
-      <div class="testi-print"><img src="img/declaracao-03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async"></div>
-      <div class="testi-print"><img src="img/declaracao-04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-01.webp" type="image/webp"><img src="img/declaracao-01.jpg" alt="Depoimento de aluno sobre mixagem" loading="lazy" decoding="async"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-02.webp" type="image/webp"><img src="img/declaracao-02.jpg" alt="Depoimento de aluno sobre organização" loading="lazy" decoding="async"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-03.webp" type="image/webp"><img src="img/declaracao-03.jpg" alt="Depoimento de aluno sobre interface do FL" loading="lazy" decoding="async"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-04.webp" type="image/webp"><img src="img/declaracao-04.jpg" alt="Depoimento de aluno sobre app de acordes" loading="lazy" decoding="async"></picture></div>
     </div>
 
     <div class="sec-header reveal" id="comprar">
@@ -1960,6 +1983,26 @@ if('IntersectionObserver' in window){
     pxObs.observe(pricingEl);
   }
 }
+
+// Lazy-load do vídeo do Laboratório — só carrega quando entra no viewport
+(function(){
+  var video = document.getElementById('lab-video');
+  if(!video || !('IntersectionObserver' in window)){ return; }
+  var loaded = false;
+  var vObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !loaded){
+        loaded = true;
+        var sources = video.querySelectorAll('source[data-src]');
+        sources.forEach(function(s){ s.src = s.getAttribute('data-src'); });
+        video.load();
+        video.play().catch(function(){}); // ignora autoplay block do safari
+        vObs.unobserve(e.target);
+      }
+    });
+  },{rootMargin:'200px 0px'}); // começa a carregar 200px antes de aparecer
+  vObs.observe(video);
+})();
 </script>
 </body>
 </html>
