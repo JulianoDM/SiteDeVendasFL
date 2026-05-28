@@ -4,12 +4,13 @@
 // O event_id deve ser o mesmo que o browser pixel usa (deduplicação).
 
 const API_VERSION  = 'v21.0';
-const PIXEL_ID     = process.env.META_PIXEL_ID;
-const ACCESS_TOKEN = process.env.META_CAPI_TOKEN;
-
 const VALID_EVENTS = new Set(['ViewContent', 'InitiateCheckout']);
 
 module.exports = async (req, res) => {
+  // Ler env vars dentro do handler para garantir leitura em cada invocação
+  const PIXEL_ID     = process.env.META_PIXEL_ID;
+  const ACCESS_TOKEN = process.env.META_CAPI_TOKEN;
+
   res.setHeader('Access-Control-Allow-Origin',  'https://flstudiointeligente.online');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -18,6 +19,7 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST')   return res.status(405).end();
 
   if (!ACCESS_TOKEN || !PIXEL_ID) {
+    console.error(JSON.stringify({ level: 'error', endpoint: 'capi', reason: 'not_configured', has_token: !!process.env.META_CAPI_TOKEN, has_pixel: !!process.env.META_PIXEL_ID }));
     return res.status(200).json({ ok: false, reason: 'not_configured' });
   }
 
