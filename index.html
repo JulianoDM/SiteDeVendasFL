@@ -2112,34 +2112,63 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
 }
 
-// ═══════ META PIXEL EVENTS ═══════
-// InitiateCheckout — quando clica em qualquer botão de compra
+// ═══════ META PIXEL + CAPI (deduplicado) ═══════
+// Cada evento gera um event_id único — o browser pixel e o CAPI server usam o mesmo ID,
+// garantindo que o Meta não conte o evento em duplicidade.
+
+function getCookie(name){
+  var m = document.cookie.match('(^|;)\\s*'+name+'\\s*=\\s*([^;]+)');
+  return m ? m[2] : '';
+}
+function sendCAPI(eventName, eventId){
+  try {
+    fetch('/api/capi',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        event_name      : eventName,
+        event_id        : eventId,
+        event_source_url: location.href,
+        fbc             : getCookie('_fbc'),
+        fbp             : getCookie('_fbp'),
+      }),
+    }).catch(function(){});
+  } catch(e){}
+}
+
+// InitiateCheckout — clique em qualquer botão de compra
 document.querySelectorAll('[data-event]').forEach(function(btn){
   btn.addEventListener('click', function(){
+    var eid = 'ic_' + Date.now();
     if(typeof fbq==='function'){
       fbq('track','InitiateCheckout',{
         content_name:'FL Studio Inteligente',
         content_category:'Curso',
         value:57.90,
         currency:'BRL'
-      });
+      },{eventID: eid});
     }
+    sendCAPI('InitiateCheckout', eid);
   });
 });
 
-// ViewContent — quando a seção de preço fica visível
+// ViewContent — quando a seção de preço fica visível (dispara 1 vez)
 if('IntersectionObserver' in window){
   var pricingEl = document.getElementById('comprar');
   if(pricingEl){
     var pxObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting && typeof fbq==='function'){
-          fbq('track','ViewContent',{
-            content_name:'Pricing Section',
-            content_category:'Curso',
-            value:57.90,
-            currency:'BRL'
-          });
+        if(e.isIntersecting){
+          var eid = 'vc_' + Date.now();
+          if(typeof fbq==='function'){
+            fbq('track','ViewContent',{
+              content_name:'Pricing Section',
+              content_category:'Curso',
+              value:57.90,
+              currency:'BRL'
+            },{eventID: eid});
+          }
+          sendCAPI('ViewContent', eid);
           pxObs.unobserve(e.target);
         }
       });
