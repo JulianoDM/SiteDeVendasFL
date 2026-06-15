@@ -65,8 +65,7 @@
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://cdn.utmify.com.br">
 
-<!-- Preload do avatar (LCP mobile — onde Lighthouse mede). Desktop usa img normal com fetchpriority. -->
-<link rel="preload" as="image" href="img/foto-studio-vsl.webp" type="image/webp" fetchpriority="high">
+<!-- Hero é texto + player CSS (sem imagem LCP). Nenhum preload de imagem necessário. -->
 
 <!-- Fontes Google: NÃO bloqueiam render (print trick) — página pinta com fallback, depois troca -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -344,7 +343,8 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
   position: relative; width: 100%; max-width: 680px;
   margin: 0 auto clamp(22px, 3vw, 30px);
   aspect-ratio: 16/9; border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--border); background: #0d0d14;
+  border: 1px solid var(--border);
+  background: radial-gradient(ellipse at 50% 38%, rgba(255,107,0,.14), #0d0d14 68%);
   box-shadow: 0 24px 60px -20px rgba(0,0,0,.6), 0 0 50px rgba(255,107,0,.06);
 }
 .vsl img { width: 100%; height: 100%; object-fit: cover; opacity: .5; }
@@ -1563,15 +1563,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="h1-soft">mesmo sem saber</span> <span class="fl">teoria musical.</span>
     </h1>
 
-    <!-- ═══ VSL (Vimeo) — facade click-to-load: o iframe (e os cookies/script do Vimeo)
-         só carregam no clique. Evita API obsoleta + cookies de terceiros no load inicial. ═══ -->
-    <div class="vsl reveal d1" id="vsl" role="button" tabindex="0" aria-label="Assistir vídeo de apresentação">
-      <picture>
-        <source srcset="img/foto-studio-vsl.webp" type="image/webp">
-        <img src="img/foto-studio-vsl.jpg" alt="Prévia do vídeo: Juliano Dias no estúdio" width="768" height="432" loading="eager" fetchpriority="high">
-      </picture>
-      <div class="vsl-play"><span></span></div>
-      <div class="vsl-label">▶ Assista antes de começar</div>
+    <!-- ═══ VSL (Vimeo) — iframe direto (estado original rápido) ═══ -->
+    <div class="vsl reveal d1" id="vsl">
+      <iframe src="https://player.vimeo.com/video/1201304265?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VSL — FL Studio Inteligente" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
     </div>
 
     <p class="hero-sub reveal d1">
@@ -2366,32 +2360,6 @@ if('IntersectionObserver' in window){
     });
   },{rootMargin:'200px 0px'}); // começa a carregar 200px antes de aparecer
   vObs.observe(video);
-})();
-
-// ═══════ VSL FACADE — carrega o Vimeo só no clique ═══════
-// O iframe (script + cookies de terceiros do Vimeo) só entra quando o usuário
-// clica no play. Mantém o load inicial limpo (sem API obsoleta nem cookies) e
-// usa dnt=1 (do not track) pra reduzir os cookies de rastreamento.
-(function(){
-  var vsl = document.getElementById('vsl');
-  if(!vsl) return;
-  function load(){
-    if(vsl.dataset.loaded) return;
-    vsl.dataset.loaded = '1';
-    var ifr = document.createElement('iframe');
-    ifr.src = 'https://player.vimeo.com/video/1201304265?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&dnt=1&autoplay=1';
-    ifr.setAttribute('frameborder','0');
-    ifr.setAttribute('allow','autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
-    ifr.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-    ifr.title = 'VSL — FL Studio Inteligente';
-    ifr.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
-    vsl.innerHTML = '';
-    vsl.appendChild(ifr);
-  }
-  vsl.addEventListener('click', load);
-  vsl.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); load(); }
-  });
 })();
 </script>
 </body>
