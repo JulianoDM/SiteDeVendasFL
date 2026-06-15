@@ -20,4 +20,10 @@ desktop.ini
 # Node (caso venha a usar)
 node_modules/
 
+# Env e segredos locais
+.env
+.env.*
+!.env.example
+!.env.*.example
+
 .vercel

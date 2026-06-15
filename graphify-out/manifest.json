@@ -1,0 +1,177 @@
+{
+  ".claude/launch.json": {
+    "mtime": 1781468602.274864,
+    "ast_hash": "54cdf05c760d061bb7b871757a1d0d24",
+    "semantic_hash": ""
+  },
+  ".codex/hooks.json": {
+    "mtime": 1781564261.425942,
+    "ast_hash": "78c596b03f2ac07ad0429446d1096368",
+    "semantic_hash": ""
+  },
+  "api/capi.js": {
+    "mtime": 1779928301.0964553,
+    "ast_hash": "c6aa12f9c87c1c4e827641d2c8510f42",
+    "semantic_hash": ""
+  },
+  "prompts-modulos.json": {
+    "mtime": 1775562394.2935557,
+    "ast_hash": "322c46b393cc88aa611dd43168c1f73f",
+    "semantic_hash": ""
+  },
+  "vercel.json": {
+    "mtime": 1775699393.86548,
+    "ast_hash": "03821e66595ce4b52dcfb86d8524674c",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/SKILL.md": {
+    "mtime": 1781564261.380254,
+    "ast_hash": "5c72924d8902cf334936c5827ff65349",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/add-watch.md": {
+    "mtime": 1781564160.3531556,
+    "ast_hash": "0df0589623217ca38a12bdcabfb42f4c",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/exports.md": {
+    "mtime": 1781564160.359154,
+    "ast_hash": "c04ddf8f1f5ef5e262ebec491a523c74",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1781564160.3613515,
+    "ast_hash": "a86a7321597b23cc2b22e011b3dc6e1d",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1781564160.4060616,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/hooks.md": {
+    "mtime": 1781564160.4131153,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/query.md": {
+    "mtime": 1781564160.4161136,
+    "ast_hash": "c2a8e798674a81b02aa9975f43023819",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/transcribe.md": {
+    "mtime": 1781564160.4171164,
+    "ast_hash": "70f6aa30d6211f3a2c7e9fc45479f50c",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/update.md": {
+    "mtime": 1781564160.421625,
+    "ast_hash": "0dad167a95bdb389f02fecffb60b1bc8",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1781564261.3832633,
+    "ast_hash": "752aa83aa64361ac32860f882dcff932",
+    "semantic_hash": ""
+  },
+  "CHECKOUT-SWAP.md": {
+    "mtime": 1776091313.268598,
+    "ast_hash": "017855e5d1d214ae393793fd4b82a2f6",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1781564788.3404999,
+    "ast_hash": "75925c0dee2fcb0d963120368cb73fbe",
+    "semantic_hash": ""
+  },
+  "img/declaracao-01.jpg": {
+    "mtime": 1775957509.5047643,
+    "ast_hash": "d96a7e588c796f89f740d94c57757a23",
+    "semantic_hash": ""
+  },
+  "img/declaracao-01.webp": {
+    "mtime": 1776646393.7943177,
+    "ast_hash": "d200c1300f36b99e7a7c3ab8ed2ba061",
+    "semantic_hash": ""
+  },
+  "img/declaracao-02.jpg": {
+    "mtime": 1775957509.737849,
+    "ast_hash": "60eed3e4e98a20a3432eaff3f003b0e2",
+    "semantic_hash": ""
+  },
+  "img/declaracao-02.webp": {
+    "mtime": 1776646393.954673,
+    "ast_hash": "88fcea77514a523408d13dca4fdce289",
+    "semantic_hash": ""
+  },
+  "img/declaracao-03.jpg": {
+    "mtime": 1775957509.9217362,
+    "ast_hash": "1c12ce596ab8ff4736a89ecf122444e9",
+    "semantic_hash": ""
+  },
+  "img/declaracao-03.webp": {
+    "mtime": 1776646394.1072521,
+    "ast_hash": "04d3c5436548bd9d50b293a5a093a0b3",
+    "semantic_hash": ""
+  },
+  "img/declaracao-04.jpg": {
+    "mtime": 1775957510.0766459,
+    "ast_hash": "51be9966263930408bf820f727347a5c",
+    "semantic_hash": ""
+  },
+  "img/declaracao-04.webp": {
+    "mtime": 1776646394.2651575,
+    "ast_hash": "8963f27d405a503442e0b73006ca6c48",
+    "semantic_hash": ""
+  },
+  "img/foto-laboratorio.png": {
+    "mtime": 1775004655.707466,
+    "ast_hash": "f4179e7dec243e89cf2241f0866c1dec",
+    "semantic_hash": ""
+  },
+  "img/foto-piano.jpg": {
+    "mtime": 1775957509.3177948,
+    "ast_hash": "978494184a6f18044176fbeecfb58e60",
+    "semantic_hash": ""
+  },
+  "img/foto-piano.webp": {
+    "mtime": 1776794273.3458498,
+    "ast_hash": "abd969ce94da18cf492bf465a4e944df",
+    "semantic_hash": ""
+  },
+  "img/foto-rosto-sm.webp": {
+    "mtime": 1776647933.0800807,
+    "ast_hash": "793d8ae24c44334a7aed462b97f17cf5",
+    "semantic_hash": ""
+  },
+  "img/foto-rosto.jpg": {
+    "mtime": 1775957508.35236,
+    "ast_hash": "4ae70fd0f01fab58b8b08c00cdf6e624",
+    "semantic_hash": ""
+  },
+  "img/foto-rosto.webp": {
+    "mtime": 1776647647.724709,
+    "ast_hash": "02169ffdfca8585539eb464b2bf8ed62",
+    "semantic_hash": ""
+  },
+  "img/foto-studio.jpg": {
+    "mtime": 1775957508.8074427,
+    "ast_hash": "e7427ac48b4e0c89484fa7ce1745a6b6",
+    "semantic_hash": ""
+  },
+  "img/foto-studio.webp": {
+    "mtime": 1776794273.1642902,
+    "ast_hash": "473828321e3ec363acbdc479098114a3",
+    "semantic_hash": ""
+  },
+  "laboratorio-acordes.mp4": {
+    "mtime": 1775070409.2841792,
+    "ast_hash": "aef89754f573ee50adbff75be1e18a80",
+    "semantic_hash": ""
+  },
+  "laboratorio-acordes.webm": {
+    "mtime": 1775070398.5571523,
+    "ast_hash": "07dede22331ceb7e8cc5068c10cb5db8",
+    "semantic_hash": ""
+  }
+}
