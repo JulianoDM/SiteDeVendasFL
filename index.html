@@ -1496,6 +1496,8 @@ footer {
 <script>
 (function(){
   var loaded = false;
+  var trackingTimer = 0;
+  var trackingDue = Infinity;
   function loadTracking(){
     if(window.__vslBooting){
       setTimeout(loadTracking, 8000);
@@ -1557,15 +1559,32 @@ footer {
     })(window,document,'script','dataLayer','GTM-MKL2FD5C');
   }
 
-  // Dispara após load completo OU na primeira interação (o que vier antes)
-  if(document.readyState === 'complete'){
-    setTimeout(loadTracking, 4000);
-  } else {
-    window.addEventListener('load', function(){ setTimeout(loadTracking, 4000); }, {once:true});
+  function scheduleTracking(delay){
+    if(loaded) return;
+    var due = Date.now() + delay;
+    if(trackingTimer && due >= trackingDue) return;
+    clearTimeout(trackingTimer);
+    trackingDue = due;
+    trackingTimer = setTimeout(function(){
+      trackingTimer = 0;
+      trackingDue = Infinity;
+      if('requestIdleCallback' in window){
+        requestIdleCallback(loadTracking, {timeout: 3000});
+      } else {
+        loadTracking();
+      }
+    }, delay);
   }
-  ['scroll','keydown'].forEach(function(ev){
-    window.addEventListener(ev, loadTracking, {once:true, passive:true});
-  });
+
+  // Dispara bem depois do load completo OU após intenção real de navegação.
+  // Evita que GTM/Clarity/Meta disputem main thread com o LCP/Speed Index mobile.
+  if(document.readyState === 'complete'){
+    scheduleTracking(12000);
+  } else {
+    window.addEventListener('load', function(){ scheduleTracking(12000); }, {once:true});
+  }
+  window.addEventListener('scroll', function(){ scheduleTracking(1500); }, {once:true, passive:true});
+  window.addEventListener('keydown', function(){ scheduleTracking(0); }, {once:true, passive:true});
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none"
