@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0A0F">
-<title>Curso de Produção Musical no FL Studio para Iniciantes — Juliano Dias</title>
-<meta name="description" content="Método inteligente para produzir músicas no FL Studio do zero. App exclusivo de acordes + 5 módulos práticos + 4 bônus. R$ 57,90 com acesso vitalício.">
+<title>Crie Beats Profissionais no FL Studio em Minutos — Sem Teoria | Juliano Dias</title>
+<meta name="description" content="Crie beats profissionais no FL Studio do zero, mesmo sem saber teoria musical. App de Acordes exclusivo + curso de 6 módulos + bônus. R$ 67,90, acesso vitalício.">
 <meta name="robots" content="index, follow">
 <meta name="facebook-domain-verification" content="vm9dgxn65db37e4ekuojoc8z98846l" />
 <link rel="canonical" href="https://flstudiointeligente.online/">
@@ -13,15 +13,15 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://flstudiointeligente.online/">
-<meta property="og:title" content="Curso de Produção Musical no FL Studio — Juliano Dias">
-<meta property="og:description" content="Método inteligente para produzir no FL Studio do zero. App exclusivo de acordes + 5 módulos + 4 bônus por R$ 57,90.">
+<meta property="og:title" content="Crie Beats Profissionais no FL Studio em Minutos — Juliano Dias">
+<meta property="og:description" content="Do zero ao primeiro beat, mesmo sem teoria musical. App de Acordes exclusivo + método de 5 passos + 4 bônus por R$ 67,90.">
 <meta property="og:image" content="https://flstudiointeligente.online/img/foto-studio.jpg">
 <meta property="og:locale" content="pt_BR">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Curso de Produção Musical no FL Studio — Juliano Dias">
-<meta name="twitter:description" content="Método inteligente para produzir no FL Studio do zero. App de acordes exclusivo + 4 bônus. R$ 57,90.">
+<meta name="twitter:title" content="Crie Beats Profissionais no FL Studio em Minutos — Juliano Dias">
+<meta name="twitter:description" content="Do zero ao primeiro beat, mesmo sem teoria musical. App de Acordes exclusivo + 4 bônus. R$ 67,90.">
 <meta name="twitter:image" content="https://flstudiointeligente.online/img/foto-studio.jpg">
 
 <script type="application/ld+json">
@@ -29,7 +29,7 @@
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Produção Musical no FL Studio para Iniciantes",
-  "description": "Aprenda a produzir suas próprias músicas no FL Studio do zero. Método prático com 5 módulos e bônus exclusivos.",
+  "description": "Aprenda a produzir suas próprias músicas no FL Studio do zero. Método prático com 6 módulos e bônus exclusivos.",
   "provider": {
     "@type": "Person",
     "name": "Juliano Dias Machado",
@@ -43,7 +43,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "price": "57.90",
+    "price": "67.90",
     "priceCurrency": "BRL",
     "availability": "https://schema.org/InStock"
   },
@@ -333,6 +333,40 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
   text-transform: uppercase;
 }
 
+/* ── Hero VSL (centralizado) ── */
+.hero-vsl { max-width: 760px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.hero-vsl .hero-badge { margin-bottom: 22px; }
+.hero-vsl .hero-h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 24px; }
+.hero-vsl .hero-sub { display: block; max-width: 560px; margin: 0 auto 28px; }
+.hero-vsl .hero-ctas { justify-content: center; margin-bottom: 0; }
+.hero-vsl .hero-stats { justify-content: center; }
+.vsl {
+  position: relative; width: 100%; max-width: 680px;
+  margin: 0 auto clamp(22px, 3vw, 30px);
+  aspect-ratio: 16/9; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border); background: #0d0d14;
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,.6), 0 0 50px rgba(255,107,0,.06);
+}
+.vsl img { width: 100%; height: 100%; object-fit: cover; opacity: .5; }
+.vsl-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.vsl-play span {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: var(--fl); box-shadow: 0 8px 32px rgba(255,107,0,.45);
+  display: flex; align-items: center; justify-content: center;
+}
+.vsl-play span::after {
+  content: ''; width: 0; height: 0;
+  border-style: solid; border-width: 13px 0 13px 22px;
+  border-color: transparent transparent transparent #000;
+  margin-left: 6px;
+}
+.vsl-label {
+  position: absolute; bottom: 14px; left: 0; right: 0; text-align: center;
+  font-family: var(--font-h); font-weight: 700; font-size: .85rem;
+  text-transform: uppercase; letter-spacing: .05em; color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.85);
+}
+
 /* ══════════════════════════════════
    BUTTONS
 ══════════════════════════════════ */
@@ -617,6 +651,27 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
   font-size: .92rem; color: var(--text2); line-height: 1.65;
 }
 .growing-note strong { color: var(--lime); font-weight: 600; }
+
+/* ── Módulos do curso (cards numerados) ── */
+.modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.modules-grid .sc-card {
+  padding: clamp(28px, 3vw, 38px) clamp(18px, 2vw, 24px);
+  min-height: 190px; display: flex; flex-direction: column; justify-content: flex-end;
+}
+.modules-grid .sc-card::before { font-size: 6.5rem; top: -6px; right: 10px; }
+.mod-title { font-family: var(--font-h); font-weight: 900; font-size: 1.15rem; text-transform: uppercase; line-height: 1.05; color: var(--text); position: relative; }
+.mod-sub { font-size: .82rem; color: var(--fl); margin-top: 6px; font-weight: 600; position: relative; }
+.mod-tag {
+  align-self: flex-start; margin-bottom: auto;
+  font-family: var(--font-h); font-weight: 700; font-size: .65rem; letter-spacing: .1em;
+  text-transform: uppercase; color: #000; background: var(--lime);
+  padding: 3px 10px; border-radius: 4px; position: relative;
+}
+.mod-bonus { border-color: var(--lime); background: linear-gradient(135deg, rgba(198,255,0,.05), var(--card)); }
+.mod-bonus::before { color: rgba(198,255,0,.08); }
+.mod-bonus:hover { border-color: var(--lime); }
+@media (max-width: 900px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .modules-grid { grid-template-columns: 1fr; } .modules-grid .sc-card { min-height: 140px; } }
 
 /* ══════════════════════════════════
    LAB PREVIEW
@@ -917,6 +972,7 @@ button:focus-visible, .btn:focus-visible, a:focus-visible {
 }
 .testi-prints-hint { display: none; text-align: center; font-size: .72rem; color: var(--text3); margin-top: 8px; }
 .testi-stars { display: flex; gap: 3px; color: var(--lime); }
+.testi-hl { font-family: var(--font-h); font-weight: 900; font-size: 1.1rem; text-transform: uppercase; color: var(--lime); line-height: 1.15; letter-spacing: .01em; }
 .testi-text {
   font-size: .95rem; color: var(--text2); line-height: 1.75;
   font-style: italic; flex: 1;
@@ -1299,6 +1355,7 @@ footer {
   .hero-badge-text { font-size: .78rem; }
 
   .scenarios { grid-template-columns: 1fr; }
+  .crossroads { grid-template-columns: 1fr !important; }
   .lab-section { grid-template-columns: 1fr; gap: 24px; }
   .lab-section .laptop-mockup { order: -1; }
   .lab-info { text-align: center; align-items: center; }
@@ -1487,7 +1544,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══════ STICKY BAR ═══════ -->
 <nav class="topbar" aria-label="Barra de oferta">
-  <span class="topbar-text">FL Studio Inteligente — R$ 57,90 + App de Acordes</span>
+  <span class="topbar-text">FL Studio Inteligente — R$ 67,90 + App de Acordes</span>
   <a href="#comprar" class="topbar-btn" data-event="cta_topbar">Entrar agora</a>
 </nav>
 
@@ -1495,57 +1552,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══════ HERO ═══════ -->
 <section class="hero" aria-label="Apresentação do curso">
-  <div class="wrap hero-wrap">
-    <div class="hero-left">
-      <div class="hero-avatar-mobile" style="display:none;">
-        <picture>
-          <source srcset="img/foto-rosto-sm.webp" type="image/webp">
-          <img src="img/foto-rosto.jpg" alt="Juliano Dias" width="90" height="90" fetchpriority="high" decoding="async">
-        </picture>
-        <div class="hero-avatar-mobile-info">
-          <div class="hero-avatar-mobile-name">Juliano Dias</div>
-          <div class="hero-avatar-mobile-role">Pianista & Produtor Musical</div>
-        </div>
-      </div>
-      <div class="hero-badge reveal" aria-hidden="true">
-        <span class="hero-badge-dot"></span>
-        <span class="hero-badge-text">App de Acordes Incluso</span>
-      </div>
-      <h1 class="hero-h1 reveal d1">
-        Crie seu primeiro<br>
-        <span class="lime">beat no fl studio</span><br>
-        <span class="h1-soft">em apenas</span> <span class="fl">5 passos.</span>
-      </h1>
-
-      <p class="hero-sub reveal d1">
-        Aprenda como começar o seu primeiro projeto da maneira certa sem ficar perdido, vendo o essencial, deixando seu projeto organizado e exportando o seu som com qualidade.
-      </p>
-
-      <div class="hero-ctas reveal d2">
-        <a href="#" class="btn btn-primary btn-lg btn-stacked checkout-btn" role="button" data-event="cta_hero">
-          Quero começar agora — R$ 57,90
-          <span class="btn-sub-strong">de R$ 147 · em até 12x de R$ 4,83</span>
-        </a>
-        <a href="#laboratorio" class="btn btn-ghost">Ver o arsenal</a>
-      </div>
-
-      <dl class="hero-stats reveal d3" aria-label="Números do curso">
-        <div class="h-stat"><dt class="h-stat-num">5</dt><dd class="h-stat-lbl">módulos</dd></div>
-        <div class="h-stat"><dt class="h-stat-num">4</dt><dd class="h-stat-lbl">bônus inclusos</dd></div>
-        <div class="h-stat"><dt class="h-stat-num">60+</dt><dd class="h-stat-lbl">sons no drum kit</dd></div>
-      </dl>
+  <div class="wrap hero-vsl">
+    <div class="hero-badge reveal" aria-hidden="true">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">App de Acordes Incluso</span>
     </div>
 
-    <figure class="hero-photo reveal" role="img" aria-label="Juliano Dias, pianista e produtor musical, em seu estúdio">
-      <picture>
-        <source srcset="img/foto-rosto.webp" type="image/webp">
-        <img src="img/foto-rosto.jpg" alt="Juliano Dias com fones de ouvido em frente ao FL Studio no estúdio" loading="eager" fetchpriority="high" width="480" height="600">
-      </picture>
-      <figcaption class="hero-photo-label">
-        <strong>Juliano Dias</strong>
-        Pianista &amp; Produtor Musical
-      </figcaption>
-    </figure>
+    <h1 class="hero-h1 reveal d1">
+      Crie <span class="lime">beats profissionais</span><br>
+      <span class="h1-soft">mesmo sem saber</span> <span class="fl">teoria musical.</span>
+    </h1>
+
+    <!-- ═══ VSL (Vimeo) ═══ -->
+    <div class="vsl reveal d1" id="vsl">
+      <iframe src="https://player.vimeo.com/video/1201304265?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VSL — FL Studio Inteligente" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+    </div>
+
+    <p class="hero-sub reveal d1">
+      Você não precisa de anos de estudo nem de "dom". Com o <strong>Método Juliano Dias + o App de Acordes</strong>, você sai do zero e exporta sua primeira música do jeito certo.
+    </p>
+
+    <div class="hero-ctas reveal d2">
+      <a href="#" class="btn btn-primary btn-lg btn-stacked checkout-btn" role="button" data-event="cta_hero">
+        Quero criar meu primeiro beat
+        <span class="btn-sub-strong">R$ 67,90 · de R$ 174 · 12x de R$ 5,66</span>
+      </a>
+    </div>
+
+    <p class="hero-microproof reveal d2" style="display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;justify-content:center;font-size:.82rem;color:var(--text3);margin:14px 0 30px;">
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.4" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Acesso imediato</span>
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.4" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>7 dias de garantia</span>
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.4" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Funciona no FL trial</span>
+    </p>
+
+    <dl class="hero-stats reveal d3" aria-label="Números do curso">
+      <div class="h-stat"><dt class="h-stat-num">6</dt><dd class="h-stat-lbl">módulos</dd></div>
+      <div class="h-stat"><dt class="h-stat-num">4</dt><dd class="h-stat-lbl">bônus inclusos</dd></div>
+      <div class="h-stat"><dt class="h-stat-num">60+</dt><dd class="h-stat-lbl">sons no drum kit</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -1554,23 +1598,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <div class="sec-header reveal">
       <span class="sec-label">Diagnóstico</span>
-      <h2 class="sec-title">Quantos tutoriais <span class="lime">você já viu?</span></h2>
-      <p class="sec-sub">A maioria não trava por falta de talento. Trava por falta de método.</p>
+      <h2 class="sec-title">Reconhece alguma <span class="lime">dessas cenas?</span></h2>
+      <p class="sec-sub">Não é talento que falta. É método. E provavelmente você já viveu isso aqui:</p>
     </div>
 
     <div class="scenarios reveal">
       <div class="sc-card" data-num="01">
-        <div class="sc-title">Não sente que é bom</div>
-        <p class="sc-text">Assiste tutorial atrás de tutorial, mas <strong>não sente que tá evoluindo de verdade.</strong> Desiste antes de criar qualquer coisa porque acha que não vai conseguir aprender.</p>
+        <div class="sc-title">O loop infinito de 4 compassos</div>
+        <p class="sc-text">Você senta empolgado, faz uma levada boa… e <strong>trava</strong>. Passa duas horas no mesmo loop de 4 compassos sem saber o que vem depois. Fecha o FL com a mesma sensação de ontem: <strong>não saiu nada.</strong></p>
       </div>
       <div class="sc-card" data-num="02">
-        <div class="sc-title">FL Studio um caos</div>
-        <p class="sc-text">Tela lotada, mixer sem nome, plugins aleatórios. Abre o projeto de ontem e <strong>não lembra onde parou</strong> — recomeça do zero de novo.</p>
+        <div class="sc-title">O caos que te paralisa</div>
+        <p class="sc-text">Tela lotada de plugin, mixer sem nome, projeto que você não lembra onde parou. Toda vez que abre o FL, <strong>recomeça do zero</strong> — e a vontade de produzir vai morrendo.</p>
       </div>
       <div class="sc-card" data-num="03">
-        <div class="sc-title">Travado antes de começar</div>
-        <p class="sc-text">Assiste tutorial, lê fórum, pesquisa preset — e <strong>não sai nenhuma música</strong>. Não é talento faltando. É método.</p>
+        <div class="sc-title">A teoria que te trava</div>
+        <p class="sc-text">Todo mundo fala em escala, campo harmônico, acorde maior e menor… e você só queria fazer <strong>uma música</strong>. A teoria virou a desculpa perfeita pra desistir antes de tentar.</p>
       </div>
+    </div>
+
+    <div class="punch-banner reveal" style="margin-top:clamp(32px,4vw,48px);">
+      <div class="punch-text">A real? Não falta talento em você.<br>Falta o <span style="text-decoration:underline;">MECANISMO</span> que transforma "eu não sei" em "tá pronto".</div>
     </div>
 
     <div class="problema-cta-wrap reveal">
@@ -1596,8 +1644,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="lab-info">
         <h3 class="lab-subtitle">Do sentimento<br>à progressão <span class="lime">em 3 cliques</span></h3>
         <p class="lab-desc">
-          Escolhe a vibe da música, o app entrega a <strong>progressão pronta pra usar</strong>.
-          A diferença entre travar no início e <strong>ter uma música nascendo em minutos.</strong>
+          Não é pacote de sample. É um <strong>aplicativo exclusivo</strong>, criado do zero pelo Juliano — você não acha isso em lugar nenhum. Escolhe a vibe, ele entrega a <strong>progressão pronta pra usar</strong>. A diferença entre travar no início e <strong>ter uma música nascendo em minutos.</strong>
         </p>
         <div class="lab-stats">
           <div class="lab-stat"><div class="lab-stat-num">17</div><div class="lab-stat-lbl">tipos de acorde</div></div>
@@ -1621,19 +1668,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="app-features reveal">
       <div class="app-feature-card" data-step="01">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Crie pelo sentimento</h4>
-        <p>Alegre, melancólica ou dark — escolha a vibe, o app gera a <strong>progressão certa</strong>.</p>
+        <p>Pra você <strong>nunca mais encarar a tela em branco</strong>: escolhe a vibe e a progressão certa aparece pronta.</p>
       </div>
       <div class="app-feature-card" data-step="02">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Progressões prontas</h4>
-        <p>Bases completas, tom ajustável, BPM flexível. <strong>Ouça antes de usar.</strong></p>
+        <p>Pra você <strong>só usar o que já soa bem</strong>: ouça antes, ajuste tom e BPM no seu controle.</p>
       </div>
       <div class="app-feature-card" data-step="03">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Monte do seu jeito</h4>
-        <p>Lista completa de acordes mastigada. <strong>Monte sua sequência sem errar.</strong></p>
+        <p>Pra você ter <strong>liberdade sem medo de errar</strong>: a lista de acordes mastigada, é só encaixar.</p>
       </div>
       <div class="app-feature-card" data-step="04">
         <h4><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Arraste e solte no FL</h4>
-        <p>MIDI exportável direto pro FL Studio. <strong>Música nascendo em segundos.</strong></p>
+        <p>Pra sua <strong>ideia virar faixa em segundos</strong>: exporta o MIDI e joga direto no FL Studio.</p>
       </div>
     </div>
 
@@ -1672,7 +1719,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="lab-cta-wrap reveal">
       <a href="#" class="btn btn-primary btn-lg checkout-btn" data-event="cta_arsenal">Quero o arsenal completo
-        <span class="lab-cta-sub">App + Curso + 3 bônus por R$ 57,90</span>
+        <span class="lab-cta-sub">App + Curso + bônus por R$ 67,90</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MÓDULOS DO CURSO (value stack) ═══════ -->
+<section class="section" id="metodo" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="sec-header reveal">
+      <span class="sec-label">O que você vai aprender</span>
+      <h2 class="sec-title">Tudo que você precisa,<br><span class="fl">na ordem certa</span></h2>
+      <p class="sec-sub">6 módulos do zero ao "tá pronto" + 1 bônus. Sem pular etapa, sem se perder.</p>
+    </div>
+    <div class="modules-grid reveal">
+      <div class="sc-card" data-num="00"><div class="mod-title">Comece por Aqui</div><div class="mod-sub">Apresentação e primeiros passos</div></div>
+      <div class="sc-card" data-num="01"><div class="mod-title">Escolhendo os Equipamentos</div><div class="mod-sub">O que você precisa para começar</div></div>
+      <div class="sc-card" data-num="02"><div class="mod-title">Sua Nova Ferramenta</div><div class="mod-sub">Dominando a interface</div></div>
+      <div class="sc-card" data-num="03"><div class="mod-title">Afinando a Máquina</div><div class="mod-sub">Setup perfeito sem delay</div></div>
+      <div class="sc-card" data-num="04"><div class="mod-title">Mão na Massa</div><div class="mod-sub">Construindo seu primeiro beat</div></div>
+      <div class="sc-card" data-num="05"><div class="mod-title">Visão de Produtor</div><div class="mod-sub">Organizando o projeto</div></div>
+      <div class="sc-card" data-num="06"><div class="mod-title">Toque Final</div><div class="mod-sub">Mix, Master e Export</div></div>
+      <div class="sc-card mod-bonus" data-num="★"><div class="mod-tag">Bônus</div><div class="mod-title">Gravando Voz</div><div class="mod-sub">no FL Studio</div></div>
+    </div>
+    <div class="lab-cta-wrap reveal">
+      <a href="#" class="btn btn-primary btn-lg checkout-btn" data-event="cta_metodo">Quero acesso a tudo isso
+        <span class="lab-cta-sub">Curso + App + bônus por R$ 67,90</span>
       </a>
     </div>
   </div>
@@ -1684,13 +1757,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Prova social antes do pricing -->
     <div class="sec-header reveal">
-      <span class="sec-label">Depoimentos</span>
-      <h2 class="sec-title">Mensagens do <span class="lime">meu WhatsApp</span></h2>
-      <p class="sec-sub">Algumas declarações dos alunos sobre o curso.</p>
+      <span class="sec-label">Quem já destravou</span>
+      <h2 class="sec-title">Mensagens reais do <span class="lime">meu WhatsApp</span></h2>
+      <p class="sec-sub">Sem ator, sem roteiro. Alunos que saíram do zero e fizeram acontecer.</p>
     </div>
     <div class="testi-grid reveal" style="margin-bottom:48px;">
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
+        <div class="testi-hl">"Mixagem deixou de ser meu medo"</div>
         <p class="testi-text">"Mixagem era meu maior medo. O módulo é muito direto ao ponto — volume, eq, master, sem enrolar. Agora os beats tão batendo bem mais alto. <strong>Mudou muito 🔥</strong>"</p>
         <div class="testi-author">
           <div class="testi-photo">
@@ -1704,6 +1778,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
+        <div class="testi-hl">"Terminei meu 1º beat em 3 dias"</div>
         <p class="testi-text">"Ficava 2h mexendo no FL e não saía nada. O módulo de organização salvou demais, vi tudo que eu fazia de errado. <strong>Consegui terminar meu 1º beat em 3 dias 🙏</strong>"</p>
         <div class="testi-author">
           <div class="testi-photo">
@@ -1717,6 +1792,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
+        <div class="testi-hl">"Hoje eu fluo no automático"</div>
         <p class="testi-text">"No começo ficava bem perdido com a interface. Mas acompanhando os vídeos deu pra produzir muita coisa boa. <strong>Agora eu abro o FL e já fluo no automático 🤙</strong>"</p>
         <div class="testi-author">
           <div class="testi-photo">
@@ -1730,92 +1806,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="sec-header reveal">
-      <span class="sec-label">Investimento</span>
-      <h2 class="sec-title">Tudo isso por <span class="fl">R$ 57,90</span></h2>
-      <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:.88rem;color:var(--text3);">
-        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Acesso imediato</span>
-        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>4.9 estrelas</span>
-        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Garantia de 7 dias</span>
-      </div>
+    <!-- Wall of Love: prints reais do WhatsApp -->
+    <div class="testi-prints reveal">
+      <div class="testi-print"><picture><source srcset="img/declaracao-01.webp" type="image/webp"><img src="img/declaracao-01.jpg" alt="Print de conversa de aluno no WhatsApp" loading="lazy" decoding="async" width="600" height="1244"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-02.webp" type="image/webp"><img src="img/declaracao-02.jpg" alt="Print de conversa de aluno no WhatsApp" loading="lazy" decoding="async" width="600" height="1233"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-03.webp" type="image/webp"><img src="img/declaracao-03.jpg" alt="Print de conversa de aluno no WhatsApp" loading="lazy" decoding="async" width="600" height="1255"></picture></div>
+      <div class="testi-print"><picture><source srcset="img/declaracao-04.webp" type="image/webp"><img src="img/declaracao-04.jpg" alt="Print de conversa de aluno no WhatsApp" loading="lazy" decoding="async" width="600" height="1253"></picture></div>
     </div>
+    <p class="testi-prints-hint">← arraste pra ver mais</p>
 
-    <div class="pricing-card reveal">
-      <div class="pricing-badge">Oferta de lançamento</div>
-      <div class="pricing-top">
-        <div class="pricing-items">
-          <div class="pricing-item">
-            <span class="pricing-item-name">🎓 Curso completo (5 módulos)</span>
-            <span class="pricing-item-right"><span class="pricing-item-val">R$ 147</span></span>
-          </div>
-          <div class="pricing-section-label">🎁 Bônus inclusos <span>hoje</span></div>
-          <div class="pricing-item">
-            <span class="pricing-item-name">🎹 Laboratório de Acordes</span>
-            <span class="pricing-item-right"><span class="pricing-item-val">R$ 97</span><span class="pricing-item-tag">Grátis</span></span>
-          </div>
-          <div class="pricing-item">
-            <span class="pricing-item-name">🥁 Drum Kit (60+ sons)</span>
-            <span class="pricing-item-right"><span class="pricing-item-val">R$ 39</span><span class="pricing-item-tag">Grátis</span></span>
-          </div>
-          <div class="pricing-item">
-            <span class="pricing-item-name">⚡ FL Studio Pré-Configurado</span>
-            <span class="pricing-item-right"><span class="pricing-item-val">R$ 39</span><span class="pricing-item-tag">Grátis</span></span>
-          </div>
-          <div class="pricing-item">
-            <span class="pricing-item-name">⌨️ Guia de Atalhos</span>
-            <span class="pricing-item-right"><span class="pricing-item-val">R$ 19</span><span class="pricing-item-tag">Grátis</span></span>
-          </div>
-        </div>
-        <div class="pricing-divider"></div>
-        <div class="pricing-total" style="margin-top:20px;">
-          <div class="pricing-total-num"><sup>R$</sup>57<span class="cts">,90</span></div>
-          <div class="pricing-total-meta">
-            <div class="pricing-from">de R$ 341</div>
-            <div class="pricing-save">Economize R$ 283</div>
-          </div>
-        </div>
-      </div>
-      <div class="pricing-bottom" id="comprar">
-        <!-- CHECKOUT: Substituir URL abaixo pela URL do Hotmart/pagamento -->
-        <a href="#" class="btn btn-primary btn-full btn-lg btn-stacked checkout-btn" id="btn-checkout" data-event="cta_pricing">
-          Quero começar agora
-          <span class="btn-sub-strong">R$ 57,90 · em até 12x de R$ 4,83</span>
-        </a>
-        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:.78rem;color:var(--text3);">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Pagamento 100% seguro e criptografado
-        </div>
-
-        <!-- Garantia embutida (antes era seção separada — agora colada ao botão) -->
-        <div class="guar-inline reveal" style="margin-top:20px;padding:18px 22px;background:linear-gradient(135deg,rgba(198,255,0,.08) 0%,rgba(198,255,0,.02) 100%);border:1px solid rgba(198,255,0,.25);border-radius:14px;display:flex;align-items:center;gap:16px;">
-          <div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;background:var(--lime);color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:900;line-height:1;">
-            <div style="font-size:1.4rem;">7</div>
-            <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;">dias</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-family:var(--font-h);font-weight:700;font-size:1rem;color:var(--text);text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px;">Risco <span style="color:var(--lime);">zero</span> pra você</div>
-            <div style="font-size:.82rem;color:var(--text2);line-height:1.5;">Não gostou nos primeiros 7 dias? <strong>Reembolso 100%</strong>, sem perguntas, sem burocracia.</div>
-          </div>
-        </div>
-
-        <div class="pricing-checks">
-          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Acesso vitalício</div>
-          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Funciona no trial do FL</div>
-          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Suporte por email</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botão App Avulso (discreto) -->
-    <div style="text-align:center;margin-top:24px;">
-      <a href="https://pay.wiapy.com/W4zTwKWQcJ" target="_blank" rel="noopener" data-event="cta_app_avulso" style="display:inline-flex;align-items:center;gap:8px;color:var(--text2);font-size:.88rem;font-weight:500;padding:12px 24px;border:1px solid rgba(255,255,255,.1);border-radius:12px;transition:all .2s;text-decoration:none;background:rgba(255,255,255,.03);" onmouseover="this.style.borderColor='var(--lime)';this.style.color='var(--lime)'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='var(--text2)'">🎹 Quero apenas o App de Acordes — <strong style="color:var(--lime);">R$ 37,90</strong></a>
-    </div>
-
-    <!-- ═══════ EXPERT (quem vai te guiar) — último card antes do fechamento ═══════ -->
-    <div class="expert-wrap" id="instrutor" style="margin-top:clamp(64px,8vw,100px);">
+    <!-- ═══════ INSTRUTOR (autoridade ANTES do preço) ═══════ -->
+    <div class="expert-wrap" id="instrutor" style="margin-top:clamp(56px,7vw,90px);">
       <div class="sec-header reveal">
         <span class="sec-label">Instrutor</span>
-        <h2 class="sec-title">Quem vai <span class="fl">te guiar</span></h2>
+        <h2 class="sec-title">Quem criou <span class="fl">o método</span></h2>
       </div>
 
       <div class="expert-layout reveal">
@@ -1846,9 +1850,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="expert-name-sub">Pianista &amp; Produtor Musical &middot; Piracicaba, SP &middot; desde 2019</div>
           </div>
           <p class="expert-bio">
-            Construiu sua trajetória com base em <strong>evolução técnica real</strong> — iniciou na produção urbana,
-            lapidando o som de grupos de Rap, e hoje entrega soluções de pós-produção e composição
-            para artistas em todo o Brasil.
+            Produtor que lapidou o som de <strong>grupos de rap</strong> e transformou anos de estúdio
+            num <strong>método de 5 passos</strong> pra quem tá começando. Hoje entrega pós-produção
+            e composição pra artistas em todo o Brasil — e ensina iniciante a sair do zero do jeito certo.
           </p>
 
           <div class="creds">
@@ -1879,16 +1883,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- ═══════ FINAL CTA (chamada final com preço) ═══════ -->
+    <div class="sec-header reveal" style="margin-top:clamp(56px,7vw,90px);">
+      <span class="sec-label">Investimento</span>
+      <h2 class="sec-title">Tudo isso por <span class="fl">R$ 67,90</span></h2>
+      <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:.88rem;color:var(--text3);">
+        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Acesso imediato</span>
+        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>4.9 estrelas</span>
+        <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--lime)" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Garantia de 7 dias</span>
+      </div>
+    </div>
+
+    <div class="pricing-card reveal">
+      <div class="pricing-badge">Oferta de lançamento</div>
+      <div class="pricing-top">
+        <div class="pricing-items">
+          <div class="pricing-item">
+            <span class="pricing-item-name">🎓 Curso completo (6 módulos)</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 87</span></span>
+          </div>
+          <div class="pricing-section-label">🎁 Bônus inclusos <span>hoje</span></div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">🎹 App de Acordes (Laboratório)</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 37</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">🎤 Bônus: Gravando Voz no FL</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 19</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">🥁 Drum Kit (60+ sons)</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 17</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">⚡ FL Studio Pré-Configurado</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 9</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+          <div class="pricing-item">
+            <span class="pricing-item-name">⌨️ Guia de Atalhos</span>
+            <span class="pricing-item-right"><span class="pricing-item-val">R$ 5</span><span class="pricing-item-tag">Grátis</span></span>
+          </div>
+        </div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-total" style="margin-top:20px;">
+          <div class="pricing-total-num"><sup>R$</sup>67<span class="cts">,90</span></div>
+          <div class="pricing-total-meta">
+            <div class="pricing-from">de R$ 174</div>
+            <div class="pricing-save">Economize R$ 106</div>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-bottom" id="comprar">
+        <!-- CHECKOUT: Substituir URL abaixo pela URL do Hotmart/pagamento -->
+        <a href="#" class="btn btn-primary btn-full btn-lg btn-stacked checkout-btn" id="btn-checkout" data-event="cta_pricing">
+          Quero começar agora
+          <span class="btn-sub-strong">R$ 67,90 · em até 12x de R$ 5,66</span>
+        </a>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:.78rem;color:var(--text3);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Pagamento 100% seguro e criptografado
+        </div>
+
+        <!-- Garantia embutida (antes era seção separada — agora colada ao botão) -->
+        <div class="guar-inline reveal" style="margin-top:20px;padding:18px 22px;background:linear-gradient(135deg,rgba(198,255,0,.08) 0%,rgba(198,255,0,.02) 100%);border:1px solid rgba(198,255,0,.25);border-radius:14px;display:flex;align-items:center;gap:16px;">
+          <div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;background:var(--lime);color:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:900;line-height:1;">
+            <div style="font-size:1.4rem;">7</div>
+            <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.05em;margin-top:2px;">dias</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:var(--font-h);font-weight:700;font-size:1rem;color:var(--text);text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px;">Risco <span style="color:var(--lime);">zero</span> pra você</div>
+            <div style="font-size:.82rem;color:var(--text2);line-height:1.5;">Não gostou nos primeiros 7 dias? <strong>Reembolso 100%</strong>, sem perguntas, sem burocracia.</div>
+          </div>
+        </div>
+
+        <div class="pricing-checks">
+          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Acesso vitalício</div>
+          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Funciona no trial do FL</div>
+          <div class="pricing-check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 7.5L5.5 11L12 4"/></svg>Suporte por email</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ GARANTIA (risco zero) ═══════ -->
+    <div class="guar-card reveal" style="margin-top:clamp(48px,6vw,72px);">
+      <div class="guar-seal">
+        <div class="guar-seal-num">7</div>
+        <div class="guar-seal-txt">DIAS DE<br>GARANTIA</div>
+      </div>
+      <div>
+        <div class="guar-h">O risco é <span style="color:var(--lime);">todo meu</span></div>
+        <p class="guar-p">Teste por <strong>7 dias</strong>. Configure o FL, crie sua primeira progressão, monte um beat. Se não sentir que valeu cada centavo, peça o reembolso — <strong>devolvo 100%, sem pergunta e sem burocracia.</strong> Ou funciona pra você, ou não te custa nada.</p>
+      </div>
+    </div>
+
+    <!-- ═══════ FAQ (quebra de objeção) ═══════ -->
+    <div id="faq" style="margin-top:clamp(56px,7vw,90px);">
+      <div class="sec-header reveal">
+        <span class="sec-label">Dúvidas</span>
+        <h2 class="sec-title">Perguntas <span class="fl">frequentes</span></h2>
+      </div>
+      <div class="faqs reveal">
+        <div class="faq"><button class="faq-q" aria-expanded="false">Funciona se eu nunca abri o FL Studio?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Sim. O curso começa do absoluto zero, assumindo que você nunca produziu nada. Cada passo é mastigado pra você nunca ficar perdido.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">Preciso de teclado ou controlador?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Não. Você faz tudo pelo mouse + o App de Acordes. Teclado é totalmente opcional — dá pra montar música inteira sem nenhum equipamento extra.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">Funciona na versão grátis do FL Studio?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Sim, 100%. O FL Studio tem uma versão de avaliação gratuita (trial) que não expira pra uso — você não precisa comprar o FL pra fazer o curso e seguir todos os passos.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">Quanto tempo até eu ver resultado?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">A maioria dos alunos faz a primeira progressão no mesmo dia. Em poucos dias você já fecha um beat completo do início ao fim.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">Serve pra qual estilo de música?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Trap, hip-hop, funk, R&amp;B, pop… qualquer estilo que usa beat. O método e o app funcionam pra todos.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">Como eu recebo o acesso?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Na hora. Assim que o pagamento é confirmado, você recebe o acesso por email. É vitalício — entra quando quiser, pra sempre.</div></div></div>
+        <div class="faq"><button class="faq-q" aria-expanded="false">E se não funcionar pra mim?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Você tem 7 dias de garantia. Se não curtir, pede o reembolso e devolvo 100%, sem pergunta e sem burocracia. O risco é todo meu.</div></div></div>
+      </div>
+    </div>
+
+    <!-- (instrutor movido para antes do preço) -->
+
+    <!-- ═══════ FECHAMENTO CROSSROADS (chamada final) ═══════ -->
     <div class="final-cta" style="padding:clamp(48px,8vw,80px) 0 0;">
+      <div class="sec-header reveal" style="margin-bottom:clamp(28px,4vw,40px);">
+        <span class="sec-label">A escolha é sua</span>
+        <h2 class="sec-title">Você está numa <span class="fl">encruzilhada.</span></h2>
+        <p class="sec-sub">Daqui a 3 meses, você vai estar num desses dois lugares:</p>
+      </div>
+
+      <div class="crossroads reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:860px;margin:0 auto clamp(36px,5vw,52px);text-align:left;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:clamp(24px,3vw,36px);opacity:.7;">
+          <div style="font-family:var(--font-h);font-weight:900;font-size:1.3rem;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">❌ O caminho de graça</div>
+          <p style="font-size:.95rem;color:var(--text3);line-height:1.7;margin:0;">Continuar assistindo tutorial, travando no mesmo loop de 4 compassos, achando que falta talento. Daqui a 3 meses, <strong>exatamente onde você está hoje.</strong></p>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(255,107,0,.07),var(--card));border:1px solid var(--fl);border-radius:var(--r);padding:clamp(24px,3vw,36px);box-shadow:0 0 40px rgba(255,107,0,.1);">
+          <div style="font-family:var(--font-h);font-weight:900;font-size:1.3rem;text-transform:uppercase;color:var(--fl);margin-bottom:12px;">✅ O caminho de R$ 67,90</div>
+          <p style="font-size:.95rem;color:var(--text2);line-height:1.7;margin:0;">Beats prontos, um método que funciona e o app que faz a música nascer. A diferença custa <strong>menos que um lanche</strong> — uma vez, acesso pra sempre.</p>
+        </div>
+      </div>
+
       <h2 class="final-h reveal">
         Sua próxima<br>
         <span class="lime">música</span> começa<br>
         <span class="fl">aqui.</span>
       </h2>
       <a href="#" class="btn btn-primary btn-lg btn-stacked reveal d1 checkout-btn" data-event="cta_final">
-        Entrar agora
-        <span class="btn-sub-strong">R$ 57,90 · em até 12x de R$ 4,83</span>
+        Quero destravar agora
+        <span class="btn-sub-strong">R$ 67,90 · em até 12x de R$ 5,66</span>
       </a>
       <div class="final-micro reveal d2">
         <span>Acesso imediato</span>
@@ -2026,10 +2158,10 @@ var SITE_CONFIG = {
     hotmart: 'https://pay.hotmart.com/K102592452T?checkoutMode=2',
     ggcheckout: 'https://pagamentoseguro.flstudiointeligente.online/checkout/v2/N0b4E9kUW4exmlm3ZJP9'
   },
-  price: 57.90,
-  oldPrice: 147,
+  price: 67.90,
+  oldPrice: 174,
   installments: 12,
-  installmentValue: 4.83,
+  installmentValue: 5.66,
   pixelId: '1504632681161955',
   googleAdsId: 'AW-18073574495',
   gtmId: 'GTM-MKL2FD5C'
@@ -2177,7 +2309,7 @@ document.querySelectorAll('[data-event]').forEach(function(btn){
       fbq('track','InitiateCheckout',{
         content_name:'FL Studio Inteligente',
         content_category:'Curso',
-        value:57.90,
+        value:67.90,
         currency:'BRL'
       },{eventID: eid});
     }
@@ -2197,7 +2329,7 @@ if('IntersectionObserver' in window){
             fbq('track','ViewContent',{
               content_name:'Pricing Section',
               content_category:'Curso',
-              value:57.90,
+              value:67.90,
               currency:'BRL'
             },{eventID: eid});
           }
