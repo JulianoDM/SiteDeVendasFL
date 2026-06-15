@@ -132,6 +132,18 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 .wrap { max-width: 1140px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); }
 
+/* Seções abaixo da dobra não precisam entrar no primeiro layout mobile.
+   content-visibility reduz o custo de style/layout sem afetar o hero/LCP. */
+.section,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
+}
+#laboratorio { contain-intrinsic-size: auto 1900px; }
+#metodo { contain-intrinsic-size: auto 1300px; }
+#oferta { contain-intrinsic-size: auto 4200px; }
+footer { contain-intrinsic-size: auto 260px; }
+
 /* skip link */
 .skip-link {
   position: absolute; top: -100px; left: 16px;
@@ -2404,13 +2416,30 @@ if('IntersectionObserver' in window){
 (function(){
   var vsl = document.getElementById('vsl');
   if(!vsl) return;
+  function addPreconnect(href){
+    if(document.querySelector('link[data-vsl-preconnect="' + href + '"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = href;
+    link.crossOrigin = 'anonymous';
+    link.setAttribute('data-vsl-preconnect', href);
+    document.head.appendChild(link);
+  }
+  function warmYoutube(){
+    addPreconnect('https://www.youtube-nocookie.com');
+    addPreconnect('https://i.ytimg.com');
+  }
   function load(){
     if(vsl.dataset.loaded) return;
     vsl.dataset.loaded = '1';
     window.__vslBooting = true;
     setTimeout(function(){ window.__vslBooting = false; }, 20000);
+    warmYoutube();
     var ifr = document.createElement('iframe');
     ifr.src = 'https://www.youtube-nocookie.com/embed/WMv9FI9tQn8?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    ifr.width = '560';
+    ifr.height = '315';
+    ifr.loading = 'eager';
     ifr.setAttribute('frameborder','0');
     ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     ifr.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
@@ -2429,6 +2458,9 @@ if('IntersectionObserver' in window){
   // (timer de 4s ou próximo scroll) — o vídeo ganha a main thread limpa.
   ['mousedown','touchstart','click'].forEach(function(ev){
     vsl.addEventListener(ev, function(e){ e.stopPropagation(); });
+  });
+  ['pointerdown','mouseenter'].forEach(function(ev){
+    vsl.addEventListener(ev, warmYoutube, {once:true, passive:true});
   });
   vsl.addEventListener('click', load);
   vsl.addEventListener('keydown', function(e){
