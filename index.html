@@ -4,6 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0A0F">
+<!-- Google tag (gtag.js) - Google Ads + GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18073574495"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-18073574495');
+  gtag('config', 'G-HY0WWK66RX');
+</script>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKL2FD5C');
+</script>
+<!-- End Google Tag Manager -->
 <title>Crie Beats Profissionais no FL Studio em Minutos — Sem Teoria | Juliano Dias</title>
 <meta name="description" content="Crie beats profissionais no FL Studio do zero, mesmo sem saber teoria musical. App de Acordes exclusivo + curso de 6 módulos + bônus. R$ 67,90, acesso vitalício.">
 <meta name="robots" content="index, follow">
@@ -1504,10 +1525,6 @@ footer {
     }
     if(loaded) return; loaded = true;
 
-    // dataLayer stub (pra código que dispara eventos antes do GTM carregar)
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
-
     // 1) Meta Pixel
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -1527,15 +1544,6 @@ footer {
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window,document,"clarity","script","wb2vi3csbc");
 
-    // 3) Google Ads + GA4
-    var gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18073574495';
-    document.head.appendChild(gtagScript);
-    gtag('js', new Date());
-    gtag('config', 'AW-18073574495');
-    gtag('config', 'G-HY0WWK66RX');
-
     // 4) UTMify
     window.pixelId = "6a17949f518e66c3ad298f1a";
     var utmPixel = document.createElement('script');
@@ -1549,13 +1557,6 @@ footer {
     utmScript.setAttribute('data-utmify-prevent-subids','');
     document.head.appendChild(utmScript);
 
-    // 5) Google Tag Manager
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MKL2FD5C');
   }
 
   function scheduleTracking(delay){

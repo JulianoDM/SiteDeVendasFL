@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1781569017.1381352,
-    "ast_hash": "1f572d015eea326bc7671c78b338cb6c",
+    "mtime": 1781633013.332919,
+    "ast_hash": "267a35cd613734581e129c7920ba4219",
     "semantic_hash": ""
   },
   "img/declaracao-01.jpg": {
@@ -172,6 +172,21 @@
   "laboratorio-acordes.webm": {
     "mtime": 1775070398.5571523,
     "ast_hash": "07dede22331ceb7e8cc5068c10cb5db8",
+    "semantic_hash": ""
+  },
+  ".claude/settings.json": {
+    "mtime": 1781627130.3542378,
+    "ast_hash": "839e83759e7b2aa75ec0405b2d844f7a",
+    "semantic_hash": ""
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1781628484.079069,
+    "ast_hash": "8dadae0371eff172cc286dfb0f6db5b3",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1781627474.2840104,
+    "ast_hash": "5f692a06f39757c316d870561cf1da88",
     "semantic_hash": ""
   }
 }
