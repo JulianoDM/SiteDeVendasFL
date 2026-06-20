@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0A0F">
-<!-- Google tag (gtag.js) - Google Ads + GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18073574495"></script>
+<!-- Google tag (gtag.js) — só o stub dataLayer no head (custo de rede ZERO).
+     O gtag/js (Ads+GA4) e o gtm.js pesados carregam DEFERIDOS junto do Pixel/Clarity
+     (ver "TRACKING DEFERIDO"). Tira ~190KB de JS + o reflow forçado do Google do
+     critical path. As tags GA4/Ads do GTM dependem deste gtag, então ele fica (deferido). -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
@@ -13,18 +15,6 @@
   gtag('config', 'AW-18073574495');
   gtag('config', 'G-HY0WWK66RX');
 </script>
-<!-- Google Tag Manager -->
-<script>
-(function(w,d,s,l,i){
-  w[l]=w[l]||[];
-  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-  j.async=true;
-  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-  f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MKL2FD5C');
-</script>
-<!-- End Google Tag Manager -->
 <title>Crie Beats Profissionais no FL Studio em Minutos — Sem Teoria | Juliano Dias</title>
 <meta name="description" content="Crie beats profissionais no FL Studio do zero, mesmo sem saber teoria musical. App de Acordes exclusivo + curso de 6 módulos + bônus. R$ 67,90, acesso vitalício.">
 <meta name="robots" content="index, follow">
@@ -1525,6 +1515,25 @@ footer {
     }
     if(loaded) return; loaded = true;
 
+    // 0) Google gtag.js (Google Ads AW + GA4) — pesado, deferido pra fora do
+    //    critical path. Drena os comandos gtag('js'/'config') já enfileirados no head.
+    //    NÃO remover: as tags de GA4/Ads do container GTM dependem deste gtag na página
+    //    (setup híbrido gtag+GTM). Sem ele, o GTM carrega mas não dispara GA4/Ads.
+    var gt = document.createElement('script');
+    gt.async = true;
+    gt.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18073574495';
+    document.head.appendChild(gt);
+
+    // 0b) Google Tag Manager — também deferido
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MKL2FD5C');
+
     // 1) Meta Pixel
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -1585,6 +1594,22 @@ footer {
   }
   window.addEventListener('scroll', function(){ scheduleTracking(1500); }, {once:true, passive:true});
   window.addEventListener('keydown', function(){ scheduleTracking(0); }, {once:true, passive:true});
+
+  // Intenção de compra: carrega o tracking JÁ no primeiro mousedown/touch num botão
+  // de checkout — garante _gcl_aw (Google Ads) + InitiateCheckout do Pixel mesmo pra
+  // quem clica rápido sem rolar. O checkout abre em nova aba, então a página fica viva
+  // pro tracking terminar de carregar.
+  function intentTrigger(e){
+    if(e.target.closest && e.target.closest('.checkout-btn')){
+      scheduleTracking(0);
+      ['mousedown','touchstart'].forEach(function(ev){
+        document.removeEventListener(ev, intentTrigger, true);
+      });
+    }
+  }
+  ['mousedown','touchstart'].forEach(function(ev){
+    document.addEventListener(ev, intentTrigger, {passive:true, capture:true});
+  });
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none"
