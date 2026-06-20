@@ -65,10 +65,9 @@
   }
 }
 </script>
-<!-- Preload das fontes self-hosted do above-the-fold (LCP = hero-sub em Inter; h1 em Big Shoulders).
-     crossorigin é obrigatório mesmo same-origin (fontes carregam em modo CORS anônimo). -->
-<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/bigshoulders-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- NÃO pré-carregar as fontes: o texto pinta no fallback size-adjusted (font-display:swap),
+     então preload só competiria por banda no 4G e atrasaria o FCP/LCP (~600ms medido em A/B).
+     As fontes self-hosted carregam na prioridade natural, depois do CSS. -->
 <!-- dns-prefetch pros domínios secundários (custo ~0, só resolve DNS) -->
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://pay.hotmart.com">
