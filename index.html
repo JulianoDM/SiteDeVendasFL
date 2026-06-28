@@ -1544,17 +1544,8 @@ footer {
       f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MKL2FD5C');
 
-    // 1) Meta Pixel
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','1504632681161955');
-    fbq('track','PageView');
+    // 1) Meta Pixel — carregado pelo snippet central do WebTracker (api/snippet.js), de
+    //    forma DEFERIDA e com external_id=visitor_id na advanced matching. Ver WebTrackerConfig.
 
     // 2) Microsoft Clarity
     (function(c,l,a,r,i,t,y){
@@ -1621,6 +1612,16 @@ footer {
     document.addEventListener(ev, intentTrigger, {passive:true, capture:true});
   });
 })();
+</script>
+<script>
+window.WebTrackerConfig = {
+  pixelId: '1504632681161955',
+  checkoutSelector: '.checkout-btn',
+  viewContentSelector: '#comprar',
+  value: 57.90, currency: 'BRL',
+  product: { name: 'FL Studio Inteligente', category: 'Curso' },
+  capiEndpoint: 'https://flstudiointeligente.online/api/capi'
+};
 </script>
 <script async src="https://webtracker.flstudiointeligente.online/api/snippet.js"></script>
 <noscript><img height="1" width="1" style="display:none"
@@ -2455,70 +2456,10 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
 }
 
-// ═══════ META PIXEL + CAPI (deduplicado) ═══════
-// Cada evento gera um event_id único — o browser pixel e o CAPI server usam o mesmo ID,
-// garantindo que o Meta não conte o evento em duplicidade.
-
-function getCookie(name){
-  var m = document.cookie.match('(^|;)\\s*'+name+'\\s*=\\s*([^;]+)');
-  return m ? m[2] : '';
-}
-function sendCAPI(eventName, eventId){
-  try {
-    fetch('/api/capi',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        event_name      : eventName,
-        event_id        : eventId,
-        event_source_url: location.href,
-        fbc             : getCookie('_fbc'),
-        fbp             : getCookie('_fbp'),
-      }),
-    }).catch(function(){});
-  } catch(e){}
-}
-
-// InitiateCheckout — clique em qualquer botão de compra
-document.querySelectorAll('[data-event]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var eid = 'ic_' + Date.now();
-    if(typeof fbq==='function'){
-      fbq('track','InitiateCheckout',{
-        content_name:'FL Studio Inteligente',
-        content_category:'Curso',
-        value:57.90,
-        currency:'BRL'
-      },{eventID: eid});
-    }
-    sendCAPI('InitiateCheckout', eid);
-  });
-});
-
-// ViewContent — quando a seção de preço fica visível (dispara 1 vez)
-if('IntersectionObserver' in window){
-  var pricingEl = document.getElementById('comprar');
-  if(pricingEl){
-    var pxObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          var eid = 'vc_' + Date.now();
-          if(typeof fbq==='function'){
-            fbq('track','ViewContent',{
-              content_name:'Pricing Section',
-              content_category:'Curso',
-              value:57.90,
-              currency:'BRL'
-            },{eventID: eid});
-          }
-          sendCAPI('ViewContent', eid);
-          pxObs.unobserve(e.target);
-        }
-      });
-    },{threshold:.3});
-    pxObs.observe(pricingEl);
-  }
-}
+// ═══════ META PIXEL + CAPI — agora no snippet central do WebTracker ═══════
+// ViewContent / InitiateCheckout (pixel + CAPI, deduplicados, com external_id=visitor_id)
+// e o PageView do pixel são disparados pelo api/snippet.js do hub, via WebTrackerConfig
+// (definido no <head>). Pixel carregado deferido lá também — fora do critical path.
 
 // Lazy-load do vídeo do Laboratório — só carrega quando entra no viewport
 (function(){
