@@ -66,6 +66,9 @@ module.exports = async (req, res) => {
       const err = await apiRes.json().catch(() => ({}));
       console.error(JSON.stringify({ level: 'error', endpoint: 'capi', err }));
     }
+    // Confirma quais chaves de match foram enviadas (sem expor valores) — diagnóstico do external_id.
+    console.log(JSON.stringify({ level: 'info', endpoint: 'capi', event: event_name, ok: apiRes.ok,
+      match: { ip: !!ip, ua: !!ua, fbc: !!fbc, fbp: !!fbp, external_id: !!external_id } }));
   } catch (err) {
     console.error(JSON.stringify({ level: 'error', endpoint: 'capi', message: String(err) }));
   }
