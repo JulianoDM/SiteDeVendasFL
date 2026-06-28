@@ -3,8 +3,14 @@
 // Capture de IP e User-Agent é feito server-side (mais confiável que browser).
 // O event_id deve ser o mesmo que o browser pixel usa (deduplicação).
 
+const crypto = require('crypto');
+
 const API_VERSION  = 'v21.0';
 const VALID_EVENTS = new Set(['ViewContent', 'InitiateCheckout']);
+
+// external_id no CAPI vai hasheado (SHA-256). É o visitor_id first-party (webtracker_vid),
+// a mesma identidade que costura visita→eventos→venda. Sobe o match e liga o funil.
+function sha256(v){ return v ? crypto.createHash('sha256').update(String(v).trim()).digest('hex') : undefined; }
 
 module.exports = async (req, res) => {
   // Ler env vars dentro do handler para garantir leitura em cada invocação
@@ -23,7 +29,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ ok: false, reason: 'not_configured' });
   }
 
-  const { event_name, event_id, event_source_url, fbc, fbp } = req.body || {};
+  const { event_name, event_id, event_source_url, fbc, fbp, external_id } = req.body || {};
 
   if (!VALID_EVENTS.has(event_name)) {
     return res.status(400).json({ error: 'invalid_event' });
@@ -38,6 +44,7 @@ module.exports = async (req, res) => {
   const userData = { client_ip_address: ip, client_user_agent: ua };
   if (fbc) userData.fbc = fbc;
   if (fbp) userData.fbp = fbp;
+  if (external_id) userData.external_id = sha256(external_id);
 
   const payload = {
     data: [{
@@ -59,6 +66,9 @@ module.exports = async (req, res) => {
       const err = await apiRes.json().catch(() => ({}));
       console.error(JSON.stringify({ level: 'error', endpoint: 'capi', err }));
     }
+    // Confirma quais chaves de match foram enviadas (sem expor valores) — diagnóstico do external_id.
+    console.log(JSON.stringify({ level: 'info', endpoint: 'capi', event: event_name, ok: apiRes.ok,
+      match: { ip: !!ip, ua: !!ua, fbc: !!fbc, fbp: !!fbp, external_id: !!external_id } }));
   } catch (err) {
     console.error(JSON.stringify({ level: 'error', endpoint: 'capi', message: String(err) }));
   }
