@@ -2335,6 +2335,26 @@ var SITE_CONFIG = {
     'xcod','sck','src','ref'                                   // Hotmart/UTMify/custom
   ];
 
+  // WebTracker visitor_id — lê/cria o MESMO cookie que o snippet (webtracker_vid).
+  // Roda INLINE (não-async), então o id existe antes de qualquer clique → mata a corrida
+  // do snippet async (que só anexava o id depois de carregar, perdendo cliques rápidos).
+  function wtVisitorId(){
+    try {
+      var key = 'webtracker_vid';
+      var m = document.cookie.match('(^|;)\\s*' + key + '\\s*=\\s*([^;]+)');
+      var id = m ? decodeURIComponent(m[2]) : '';
+      try { id = id || localStorage.getItem(key); } catch(e){}
+      if(!id){
+        id = (window.crypto && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : ('vid_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2));
+        document.cookie = key + '=' + encodeURIComponent(id) + '; path=/; max-age=' + (365*24*60*60) + '; SameSite=Lax';
+        try { localStorage.setItem(key, id); } catch(e){}
+      }
+      return id;
+    } catch(e){ return ''; }
+  }
+
   function appendTrackingParams(url){
     try {
       var target = new URL(url);
@@ -2345,6 +2365,10 @@ var SITE_CONFIG = {
           target.searchParams.set(key, value);
         }
       });
+      // Carrega o visitor_id pro webhook do GG: sck (campo que o GG repassa) + wt_vid (redundância).
+      // Liga a venda à jornada (PageView/fbp/fbc/UA) → atribuição + EMQ. UTMify desligada → sck livre.
+      var vid = wtVisitorId();
+      if(vid){ target.searchParams.set('sck', vid); target.searchParams.set('wt_vid', vid); }
       return target.toString();
     } catch(e){
       return url; // fallback seguro se URL for inválida por algum motivo
