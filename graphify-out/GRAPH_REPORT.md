@@ -1,16 +1,16 @@
-# Graph Report - SiteDeVendasFL  (2026-06-16)
+# Graph Report - SiteDeVendasFL  (2026-07-03)
 
 ## Corpus Check
-- 19 files · ~80,393 words
+- 19 files · ~80,916 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 87 nodes · 73 edges · 15 communities (10 shown, 5 thin omitted)
+- 89 nodes · 75 edges · 15 communities (10 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `50bd8082`
+- Built from commit: `9fadf154`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -92,7 +92,7 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ## Knowledge Gaps
-- **61 isolated node(s):** `VALID_EVENTS`, `buildCommand`, `outputDirectory`, `cleanUrls`, `trailingSlash` (+56 more)
+- **62 isolated node(s):** `crypto`, `VALID_EVENTS`, `buildCommand`, `outputDirectory`, `cleanUrls` (+57 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -100,10 +100,10 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `What You Must Do When Invoked` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
+  _High betweenness centrality (0.053) - this node is a cross-community bridge._
 - **Why does `/graphify` connect `Community 1` to `Community 2`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
-- **What connects `VALID_EVENTS`, `buildCommand`, `outputDirectory` to the rest of the system?**
-  _61 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **What connects `crypto`, `VALID_EVENTS`, `buildCommand` to the rest of the system?**
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

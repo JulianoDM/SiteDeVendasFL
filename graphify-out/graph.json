@@ -14,14 +14,34 @@
       "norm_label": "capi.js"
     },
     {
+      "label": "crypto",
+      "file_type": "code",
+      "source_file": "api/capi.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "api_capi_crypto",
+      "community": 13,
+      "norm_label": "crypto"
+    },
+    {
       "label": "VALID_EVENTS",
       "file_type": "code",
       "source_file": "api/capi.js",
-      "source_location": "L7",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "api_capi_valid_events",
       "community": 13,
       "norm_label": "valid_events"
+    },
+    {
+      "label": "sha256()",
+      "file_type": "code",
+      "source_file": "api/capi.js",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "api_capi_sha256",
+      "community": 13,
+      "norm_label": "sha256()"
     },
     {
       "label": "vercel.json",
@@ -879,6 +899,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/capi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "api_capi",
+      "target": "api_capi_crypto",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "api/capi.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "api_capi",
+      "target": "api_capi_sha256",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "api/capi.js",
       "source_location": "L7",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1531,9 +1571,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_claude_md",
-      "confidence_score": 1.0
+      "target": "claude_claude_md"
     },
     {
       "relation": "contains",
@@ -1541,9 +1581,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_arquitetura",
-      "confidence_score": 1.0
+      "target": "claude_arquitetura"
     },
     {
       "relation": "contains",
@@ -1551,9 +1591,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_eventos_de_tracking",
-      "confidence_score": 1.0
+      "target": "claude_eventos_de_tracking"
     },
     {
       "relation": "contains",
@@ -1561,9 +1601,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_meta_pixel_capi_deduplica\u00e7\u00e3o",
-      "confidence_score": 1.0
+      "target": "claude_meta_pixel_capi_deduplica\u00e7\u00e3o"
     },
     {
       "relation": "contains",
@@ -1571,9 +1611,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_performance_padr\u00f5es_usados",
-      "confidence_score": 1.0
+      "target": "claude_performance_padr\u00f5es_usados"
     },
     {
       "relation": "contains",
@@ -1581,9 +1621,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_project_overview",
-      "confidence_score": 1.0
+      "target": "claude_project_overview"
     },
     {
       "relation": "contains",
@@ -1591,9 +1631,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_sistema_de_checkout_din\u00e2mico",
-      "confidence_score": 1.0
+      "target": "claude_sistema_de_checkout_din\u00e2mico"
     },
     {
       "relation": "contains",
@@ -1601,11 +1641,11 @@
       "source_file": "CLAUDE.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_site_config_configura\u00e7\u00e3o_centralizada",
-      "confidence_score": 1.0
+      "target": "claude_site_config_configura\u00e7\u00e3o_centralizada"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "50bd8082a94d534c2d4a931f0a1c31b8b040e2a3"
+  "built_at_commit": "9fadf154e65a323e9acdef8e8498552fe08ddf64"
 }
